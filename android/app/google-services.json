@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "768697115878",
+    "firebase_url": "https://i-love-ae.firebaseio.com",
+    "project_id": "i-love-ae",
+    "storage_bucket": "i-love-ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768697115878:android:5031bed4a8322422aa4727",
+        "android_client_info": {
+          "package_name": "com.iloveae"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768697115878-mvf5frau7go3d56ag59a9gd48gldotmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr63Tmh1YEP2-PAdfxp-RyBu57_jlDen4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768697115878-mvf5frau7go3d56ag59a9gd48gldotmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
