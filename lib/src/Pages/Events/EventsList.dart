@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
 import 'package:flutter_login_signup/src/Utils/Helper.dart';
 import 'package:flutter_login_signup/src/Widgets/customBottomNavigationBar.dart';
 import 'package:flutter_login_signup/src/Widgets/customAppBar.dart';
 import 'package:load/load.dart';
 import 'package:flutter_login_signup/src/Pages/Events/EventPage.dart';
-import 'package:flutter_login_signup/src/Models/Event';
 
 class EventsListPage extends StatefulWidget {
   EventsListPage({Key key, this.title}) : super(key: key);
@@ -44,27 +45,48 @@ class _EventsListPageState extends State<EventsListPage> {
 
     showLoadingDialog();
 
-    print(response.body);
+    // print(response.body);
 
-     data = json.decode(response.body);
+    data = json.decode(response.body);
+    print(data);
+
+    eventsDataList2 = [];
+
+    //  print(data['events'][0]["title"]);
+
+
+
+
 
     setState(() {
 
+      for (var loop = 0; loop < data.length; loop++) {
+        // String title = data['events'][loop]["title"];
+        //  String thumbnail = data['events'][loop]["thumbnail"];
+        // String date = data['events'][loop]["date"];
 
-        // eventsDataList = data['events'];
+               // new Event(title: "title", thumbnail: 'thumbnail', date: 'date');
+
+       // eventsDataList2.add(Event(title: "title", thumbnail: 'thumbnail', date: 'date'));
+
+        eventsDataList2.add(new Event(title: "title", thumbnail: "thumbnail", date: "date"));
 
 
+      }
 
-
-         eventsDataList=(json.decode(response.body) as List).map((i) =>
-             Event.fromJson(i)).toList();
-
-
-         print(eventsDataList);
-
-
-    //  eventsDataList2 = mapData.entries.map( (entry) => Event('title', 'description', 'title')).toList();
     });
+
+    //  print(eventsDataList);
+
+    /* setState((){
+
+
+           eventsDataList=(data['events'] as List).map((i) =>
+               Event.fromJson(i)).toList();
+
+         });*/
+
+    // eventsDataList2 = mapData.entries.map( (entry) => Event('title', 'description', 'title')).toList();
   }
 
   Widget getListViewWidget(double height, double width, var dataArray) {
@@ -233,16 +255,24 @@ class _EventsListPageState extends State<EventsListPage> {
         //  mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           // getCarouselWidget(height),
-          (eventsDataList != null)
-              ? getListViewWidget(height, width, eventsDataList)
+          (eventsDataList2 != null)
+              ? getListViewWidget(height, width, eventsDataList2)
               : Center(
-              child: Text(
-                  'No events found.',
-                  style: TextStyle(fontSize: 25),
-              ),
-          )
+                  child: Text(
+                    'No events found.',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                )
         ],
       ),
     );
   }
+}
+
+class Event {
+  String title;
+  String thumbnail;
+  String date;
+
+  Event({this.title, this.thumbnail, this.date});
 }
