@@ -117,6 +117,8 @@ flutter:
     - assets/blood_request/icons/hospital_name.png
     - assets/blood_request/icons/patient_name.png
     - assets/blood_request/banners/blood_banner.png
+    - assets/event/heart_red.png
+    - assets/event/heart_white.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

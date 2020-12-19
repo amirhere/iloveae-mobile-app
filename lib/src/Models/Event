@@ -1,0 +1,24 @@
+class Event {
+    String title;
+    String thumbnail;
+    String date;
+    String description;
+
+    Event({this.title, this.thumbnail, this.date, this.description});
+
+    Event.fromJson(Map<String, dynamic> json) {
+        title = json['title'];
+        thumbnail = json['thumbnail'];
+        date = json['date'];
+        description = json['description'];
+    }
+
+    Map<String, dynamic> toJson() {
+        final Map<String, dynamic> data = new Map<String, dynamic>();
+        data['title'] = this.title;
+        data['thumbnail'] = this.thumbnail;
+        data['date'] = this.date;
+        data['description'] = this.description;
+        return data;
+    }
+}

@@ -300,6 +300,7 @@ class _EventPageState extends State<EventPage> {
                                                                 },
                                                             ),
                                                             Column(
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
                                                                 children: [
                                                                     SizedBox(height: 17),
                                                                     Text(

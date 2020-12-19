@@ -3228,9 +3228,9 @@ urlToFile(String imageUrl) async {
                     padding: EdgeInsets.only(left: 50),
                     child: Text(
                         'Update Information',
-                        style: TextStyle(
-                            color: Color(0xFFFFFFFF),
-                        ),
+
+                        style: TextStyle(color: Colors.white, fontSize: 15)
+
                     )),
                 leading: IconButton(
                     icon: Icon(Icons.arrow_back_ios),
