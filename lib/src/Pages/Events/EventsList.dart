@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'package:toast/toast.dart';
+
 import 'package:http/http.dart' as http;
 
 import 'package:jiffy/jiffy.dart';
@@ -84,14 +86,16 @@ class _EventsListPageState extends State<EventsListPage> {
               ),
             );
           },
-          child: getEventTileWidget(width, dataArray[index].title,
-              dataArray[index].thumbnail, dataArray[index].date,  dataArray[index].isLiked),
+          child: getEventTileWidget(width, dataArray[index]),
         );
       },
     );
   }
 
-  Widget getEventTileWidget(width, title, thumbnail, date, isLiked) {
+  Widget getEventTileWidget(width, event) {
+
+
+
     return Stack(
       //  alignment: Alignment.bottomCenter,
       overflow: Overflow.visible,
@@ -99,7 +103,7 @@ class _EventsListPageState extends State<EventsListPage> {
         Container(
           height: 215,
           child: FittedBox(
-            child: Image.network(thumbnail),
+            child: Image.network(event.thumbnail),
             fit: BoxFit.fill,
           ),
         ),
@@ -107,12 +111,17 @@ class _EventsListPageState extends State<EventsListPage> {
           right: width * 0.13,
           top: 50,
           child: Container(
-            child: (isFavorite)
+            child: (event.isLiked == "false")
                 ? IconButton(
                     icon: new Image.asset("assets/event/heart_white.png"),
                     onPressed: () {
                       setState(() {
-                        isFavorite = !isFavorite;
+                       // isFavorite = !isFavorite;
+                        event.isLiked = "true";
+
+                        Toast.show("Notifications for "+event.title+" enabled", context,
+                            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+
                       });
                     },
                   )
@@ -120,7 +129,14 @@ class _EventsListPageState extends State<EventsListPage> {
                     icon: new Image.asset("assets/event/heart_red.png"),
                     onPressed: () {
                       setState(() {
-                        isFavorite = !isFavorite;
+                       // isFavorite = !isFavorite;
+                        event.isLiked = "false";
+
+                        Toast.show("Notifications for "+event.title+" disabled", context,
+                            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+
+
+
                       });
                     },
                   ),
@@ -155,13 +171,13 @@ class _EventsListPageState extends State<EventsListPage> {
                           children: [
                             SizedBox(height: 17),
                             Text(
-                              title,
+                              event.title,
                               style: TextStyle(
                                   fontSize: 14,
                                   color: Theme.of(context).primaryColor),
                             ),
                             Text(
-                              "wow",
+                              event.date,
                               style: TextStyle(
                                   fontSize: 14,
                                   color: Theme.of(context).primaryColor),
@@ -194,7 +210,7 @@ class _EventsListPageState extends State<EventsListPage> {
                           color: Colors.white, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      Helper.timeDifferenceCalculator(date),
+                      Helper.timeDifferenceCalculator(event.date),
                       style: TextStyle(
                           fontSize: 36,
                           color: Colors.white,

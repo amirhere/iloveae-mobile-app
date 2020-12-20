@@ -77,7 +77,7 @@ class Helper{
 
         final birthday = DateTime(int.parse(arr[0]),int.parse(arr[1]),int.parse(arr[2]));
         final date2 = DateTime.now();
-        final difference = date2.difference(birthday).inDays;
+        final difference = birthday.difference(date2).inDays;
 
         return difference.toString();
     }
