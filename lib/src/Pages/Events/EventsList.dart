@@ -4,16 +4,12 @@ import 'dart:convert';
 import 'package:toast/toast.dart';
 
 import 'package:http/http.dart' as http;
-
-import 'package:jiffy/jiffy.dart';
-
-
 import 'package:flutter_login_signup/src/Utils/Helper.dart';
 import 'package:flutter_login_signup/src/Widgets/customBottomNavigationBar.dart';
 import 'package:flutter_login_signup/src/Widgets/customAppBar.dart';
 import 'package:load/load.dart';
 import 'package:flutter_login_signup/src/Pages/Events/EventPage.dart';
-
+import 'package:flutter_login_signup/src/Models/Event/Event.dart';
 
 class EventsListPage extends StatefulWidget {
   EventsListPage({Key key, this.title}) : super(key: key);
@@ -26,14 +22,11 @@ class EventsListPage extends StatefulWidget {
 class _EventsListPageState extends State<EventsListPage> {
   Map<String, dynamic> map;
   List<Event> eventsDataList;
-  List<Event> eventsDataList2;
-  bool isFavorite = false;
 
   @override
   void initState() {
     getData();
   }
-
 
   void getData() async {
     showLoadingDialog();
@@ -53,20 +46,11 @@ class _EventsListPageState extends State<EventsListPage> {
 
     print(data);
 
-
-
-    setState(() {
-       eventsDataList = data.map((val) =>  Event.fromJson(val)).toList();
-
-       Event event =  eventsDataList[0];
-       print('-=-=-=-=-=-=-=-=-');
-       print(event.date);
-       print('-=-=-=-=-=-=-=-=-');
-
-
-    });
-
-
+    setState(
+      () {
+        eventsDataList = data.map((val) => Event.fromJson(val)).toList();
+      },
+    );
   }
 
   Widget getListViewWidget(double height, double width, var dataArray) {
@@ -75,6 +59,7 @@ class _EventsListPageState extends State<EventsListPage> {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           onTap: () {
+
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => EventPage(
@@ -82,9 +67,10 @@ class _EventsListPageState extends State<EventsListPage> {
                     description: dataArray[index].description,
                     deepLink: "deeplink",
                     date: dataArray[index].date,
-                    images: dataArray[index].event_images),
+                    images: dataArray[index].eventImages),
               ),
             );
+
           },
           child: getEventTileWidget(width, dataArray[index]),
         );
@@ -92,12 +78,10 @@ class _EventsListPageState extends State<EventsListPage> {
     );
   }
 
+
+
   Widget getEventTileWidget(width, event) {
-
-
-
     return Stack(
-      //  alignment: Alignment.bottomCenter,
       overflow: Overflow.visible,
       children: [
         Container(
@@ -116,12 +100,13 @@ class _EventsListPageState extends State<EventsListPage> {
                     icon: new Image.asset("assets/event/heart_white.png"),
                     onPressed: () {
                       setState(() {
-                       // isFavorite = !isFavorite;
                         event.isLiked = "true";
 
-                        Toast.show("Notifications for "+event.title+" enabled", context,
-                            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
-
+                        Toast.show(
+                            "Notifications for " + event.title + " enabled",
+                            context,
+                            duration: Toast.LENGTH_LONG,
+                            gravity: Toast.BOTTOM);
                       });
                     },
                   )
@@ -129,14 +114,13 @@ class _EventsListPageState extends State<EventsListPage> {
                     icon: new Image.asset("assets/event/heart_red.png"),
                     onPressed: () {
                       setState(() {
-                       // isFavorite = !isFavorite;
                         event.isLiked = "false";
 
-                        Toast.show("Notifications for "+event.title+" disabled", context,
-                            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
-
-
-
+                        Toast.show(
+                            "Notifications for " + event.title + " disabled",
+                            context,
+                            duration: Toast.LENGTH_LONG,
+                            gravity: Toast.BOTTOM);
                       });
                     },
                   ),
@@ -245,8 +229,6 @@ class _EventsListPageState extends State<EventsListPage> {
         height: height,
       ),
       body: Stack(
-        //   crossAxisAlignment: CrossAxisAlignment.center,
-        //  mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           // getCarouselWidget(height),
           (eventsDataList != null)
@@ -261,63 +243,4 @@ class _EventsListPageState extends State<EventsListPage> {
       ),
     );
   }
-}
-
-
-
-
-class Event {
-  String title;
-  String thumbnail;
-  String date;
-  String description;
-  String isLiked;
-  var eventImages;
-
-
-  Event(
-      {this.title,
-        this.thumbnail,
-        this.date,
-        this.description,
-        this.isLiked,
-        this.eventImages,
-
-      });
-
-
-  Event.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    thumbnail = json['thumbnail'];
-    date = json['date'];
-    description = json['description'];
-    isLiked =  json['isLiked'];
-    eventImages = json['event_images'];
-
-
-  }
-
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['thumbnail'] = this.thumbnail;
-    data['date'] = this.date;
-    data['description'] = this.description;
-    data['isLiked'] = this.isLiked;
-    data['event_images'] = this.eventImages;
-    return data;
-  }
-
-
-
-/*
-
-    int StringToIntConverter(String number){
-        var myInt = int.parse('12345');
-        assert(myInt is int);
-        print(myInt); // 12345
-        return myInt;
-    }*/
-
 }

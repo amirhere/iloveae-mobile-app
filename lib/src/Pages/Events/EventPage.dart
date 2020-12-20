@@ -4,16 +4,8 @@ import 'package:flutter_login_signup/src/Pages/Auth/loginPage.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:http/http.dart' as http;
 import 'dart:math';
-
 import 'dart:io';
-import 'dart:math';
-
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutter_markdown/flutter_markdown.dart';
-
 import 'package:flutter_login_signup/src/Pages/Settings/editProfile.dart';
-
 import 'package:flutter_login_signup/src/Widgets/customAppBar.dart';
 import 'package:flutter_login_signup/src/Widgets/socialMedia.dart';
 import 'package:path_provider/path_provider.dart';
@@ -45,11 +37,9 @@ class _EventPageState extends State<EventPage> {
     final ScrollController scrollController = ScrollController();
 
     _EventPageState(this.title, this.description, this.images, this.deepLink, this.date) {
-        for (int loop = 0; loop < images.length; loop++) {
-            Map resp = images[loop];
-            print(resp['url']);
-            networkImagesList.add(NetworkImage(resp['url']));
 
+        for (int loop = 0; loop < images.length; loop++) {
+            networkImagesList.add(NetworkImage(images[loop].url));
         }
     }
 
