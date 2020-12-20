@@ -68,6 +68,21 @@ class Helper{
     }
 
 
+    static String timeDifferenceCalculator(String date){
+        print('in time difference calculator');
+        print(date);
+
+        var arr = date.split('-');
+
+
+        final birthday = DateTime(int.parse(arr[0]),int.parse(arr[1]),int.parse(arr[2]));
+        final date2 = DateTime.now();
+        final difference = date2.difference(birthday).inDays;
+
+        return difference.toString();
+    }
+
+
 
 
 

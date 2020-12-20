@@ -3,11 +3,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import 'package:jiffy/jiffy.dart';
+
+
 import 'package:flutter_login_signup/src/Utils/Helper.dart';
 import 'package:flutter_login_signup/src/Widgets/customBottomNavigationBar.dart';
 import 'package:flutter_login_signup/src/Widgets/customAppBar.dart';
 import 'package:load/load.dart';
 import 'package:flutter_login_signup/src/Pages/Events/EventPage.dart';
+
 
 class EventsListPage extends StatefulWidget {
   EventsListPage({Key key, this.title}) : super(key: key);
@@ -18,8 +22,8 @@ class EventsListPage extends StatefulWidget {
 }
 
 class _EventsListPageState extends State<EventsListPage> {
-  Map data;
-  List eventsDataList;
+  Map<String, dynamic> map;
+  List<Event> eventsDataList;
   List<Event> eventsDataList2;
   bool isFavorite = false;
 
@@ -27,6 +31,7 @@ class _EventsListPageState extends State<EventsListPage> {
   void initState() {
     getData();
   }
+
 
   void getData() async {
     showLoadingDialog();
@@ -37,56 +42,29 @@ class _EventsListPageState extends State<EventsListPage> {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': Helper.access_token
       },
-      body: jsonEncode(<String, String>{
-        //'email': userNameTextEditingController.text,
-        //'password': passwordTextEditingController.text
-      }),
     );
 
-    showLoadingDialog();
+    hideLoadingDialog();
 
-    // print(response.body);
+    map = json.decode(response.body);
+    List<dynamic> data = map["events"];
 
-    data = json.decode(response.body);
     print(data);
-
-    eventsDataList2 = [];
-
-    //  print(data['events'][0]["title"]);
-
-
 
 
 
     setState(() {
+       eventsDataList = data.map((val) =>  Event.fromJson(val)).toList();
 
-      for (var loop = 0; loop < data.length; loop++) {
-        // String title = data['events'][loop]["title"];
-        //  String thumbnail = data['events'][loop]["thumbnail"];
-        // String date = data['events'][loop]["date"];
+       Event event =  eventsDataList[0];
+       print('-=-=-=-=-=-=-=-=-');
+       print(event.date);
+       print('-=-=-=-=-=-=-=-=-');
 
-               // new Event(title: "title", thumbnail: 'thumbnail', date: 'date');
-
-       // eventsDataList2.add(Event(title: "title", thumbnail: 'thumbnail', date: 'date'));
-
-        eventsDataList2.add(new Event(title: "title", thumbnail: "thumbnail", date: "date"));
-
-
-      }
 
     });
 
-    //  print(eventsDataList);
 
-    /* setState((){
-
-
-           eventsDataList=(data['events'] as List).map((i) =>
-               Event.fromJson(i)).toList();
-
-         });*/
-
-    // eventsDataList2 = mapData.entries.map( (entry) => Event('title', 'description', 'title')).toList();
   }
 
   Widget getListViewWidget(double height, double width, var dataArray) {
@@ -98,22 +76,22 @@ class _EventsListPageState extends State<EventsListPage> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => EventPage(
-                    title: dataArray[index]["title"],
-                    description: dataArray[index]["description"],
-                    deepLink: dataArray[index]["deep_link"],
-                    date: dataArray[index]["date"],
-                    images: dataArray[index]["event_images"]),
+                    title: dataArray[index].title,
+                    description: dataArray[index].description,
+                    deepLink: "deeplink",
+                    date: dataArray[index].date,
+                    images: dataArray[index].event_images),
               ),
             );
           },
-          child: getEventTileWidget(width, dataArray[index]['title'],
-              dataArray[index]['thumbnail'], dataArray[index]['date']),
+          child: getEventTileWidget(width, dataArray[index].title,
+              dataArray[index].thumbnail, dataArray[index].date,  dataArray[index].isLiked),
         );
       },
     );
   }
 
-  Widget getEventTileWidget(width, title, thumbnail, date) {
+  Widget getEventTileWidget(width, title, thumbnail, date, isLiked) {
     return Stack(
       //  alignment: Alignment.bottomCenter,
       overflow: Overflow.visible,
@@ -183,7 +161,7 @@ class _EventsListPageState extends State<EventsListPage> {
                                   color: Theme.of(context).primaryColor),
                             ),
                             Text(
-                              date,
+                              "wow",
                               style: TextStyle(
                                   fontSize: 14,
                                   color: Theme.of(context).primaryColor),
@@ -216,7 +194,7 @@ class _EventsListPageState extends State<EventsListPage> {
                           color: Colors.white, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "5",
+                      Helper.timeDifferenceCalculator(date),
                       style: TextStyle(
                           fontSize: 36,
                           color: Colors.white,
@@ -255,8 +233,8 @@ class _EventsListPageState extends State<EventsListPage> {
         //  mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           // getCarouselWidget(height),
-          (eventsDataList2 != null)
-              ? getListViewWidget(height, width, eventsDataList2)
+          (eventsDataList != null)
+              ? getListViewWidget(height, width, eventsDataList)
               : Center(
                   child: Text(
                     'No events found.',
@@ -269,10 +247,61 @@ class _EventsListPageState extends State<EventsListPage> {
   }
 }
 
+
+
+
 class Event {
   String title;
   String thumbnail;
   String date;
+  String description;
+  String isLiked;
+  var eventImages;
 
-  Event({this.title, this.thumbnail, this.date});
+
+  Event(
+      {this.title,
+        this.thumbnail,
+        this.date,
+        this.description,
+        this.isLiked,
+        this.eventImages,
+
+      });
+
+
+  Event.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    thumbnail = json['thumbnail'];
+    date = json['date'];
+    description = json['description'];
+    isLiked =  json['isLiked'];
+    eventImages = json['event_images'];
+
+
+  }
+
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['title'] = this.title;
+    data['thumbnail'] = this.thumbnail;
+    data['date'] = this.date;
+    data['description'] = this.description;
+    data['isLiked'] = this.isLiked;
+    data['event_images'] = this.eventImages;
+    return data;
+  }
+
+
+
+/*
+
+    int StringToIntConverter(String number){
+        var myInt = int.parse('12345');
+        assert(myInt is int);
+        print(myInt); // 12345
+        return myInt;
+    }*/
+
 }
