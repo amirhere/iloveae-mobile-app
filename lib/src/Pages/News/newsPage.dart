@@ -16,6 +16,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 
 import 'package:flutter_login_signup/src/Pages/News/newsListPage.dart';
+import 'package:flutter_html/flutter_html.dart';
+
 
 class NewsPage extends StatefulWidget {
   String title;
@@ -257,11 +259,12 @@ class _NewsPageState extends State<NewsPage> {
                                 width: width,
                                 margin: EdgeInsets.symmetric(horizontal: 30),
                                 padding: EdgeInsets.only(top: 30),
-                                child: Text(
+                                child: /*Text(
                                     description,
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
+                                ),*/
+                                Html(data: description),
                             ),
 
 

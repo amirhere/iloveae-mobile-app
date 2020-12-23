@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              height: height * (0.56),
+              height: height * (0.565),
               child: Scrollbar(
                   child: ListView(
                 //    padding: const EdgeInsets.all(8),

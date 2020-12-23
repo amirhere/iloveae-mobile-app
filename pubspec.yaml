@@ -49,6 +49,7 @@ dependencies:
   form_field_validator:
   webview_flutter:
   url_launcher:
+  flutter_html:
 
 
 

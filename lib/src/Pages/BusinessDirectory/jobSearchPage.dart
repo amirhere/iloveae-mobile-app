@@ -242,10 +242,10 @@ class _JobCategoriesPageState extends State<JobCategoriesPage> {
                 Container(
                     // color:Colors.yellow,
                     //  height:  width * 0.85,
-                    padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.11),
                     child: getCustomGridOddRowWidget(
-                        width * 0.59,
-                        width * 0.59,
+                        width * 0.57,
+                        width * 0.57,
                         "Accounting/Finance",
                         "assets/email_icon.png",
                         "Administrative",
@@ -254,16 +254,16 @@ class _JobCategoriesPageState extends State<JobCategoriesPage> {
                         "assets/email_icon.png"),
                 ),
                 SizedBox(
-                    height: height * 0.007,
+                    height: height * 0.009,
                 ),
 
                 Container(
                     // color:Colors.yellow,
                     //  height:  width * 0.85,
-                    padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.11),
                     child: getCustomGridOddRowWidget(
-                        width * 0.59,
-                        width * 0.59,
+                        width * 0.57,
+                        width * 0.57,
                         "Agriculture",
                         "assets/email_icon.png",
                         "Architecture",
@@ -272,15 +272,15 @@ class _JobCategoriesPageState extends State<JobCategoriesPage> {
                         "assets/email_icon.png"),
                 ),
                 SizedBox(
-                    height: height * 0.007,
+                    height: height * 0.009,
                 ),
                 Container(
                     // color:Colors.yellow,
                     //  height:  width * 0.85,
-                    padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.11),
                     child: getCustomGridOddRowWidget(
-                        width * 0.59,
-                        width * 0.59,
+                        width * 0.57,
+                        width * 0.57,
                         "Aviatory/Airlines",
                         "assets/email_icon.png",
                         "Administrative",
@@ -289,16 +289,16 @@ class _JobCategoriesPageState extends State<JobCategoriesPage> {
                         "assets/email_icon.png"),
                 ),
                 SizedBox(
-                    height: height * 0.007,
+                    height: height * 0.009,
                 ),
 
                 Container(
                     // color:Colors.yellow,
                     //  height:  width * 0.85,
-                    padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.11),
                     child: getCustomGridOddRowWidget(
-                        width * 0.59,
-                        width * 0.59,
+                        width * 0.57,
+                        width * 0.57,
                         "Accounting/Finance",
                         "assets/email_icon.png",
                         "Administrative",
@@ -307,7 +307,7 @@ class _JobCategoriesPageState extends State<JobCategoriesPage> {
                         "assets/email_icon.png"),
                 ),
                 SizedBox(
-                    height: height * 0.007,
+                    height: height * 0.009,
                 ),
 
 

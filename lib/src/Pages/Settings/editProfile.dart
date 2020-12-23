@@ -3128,12 +3128,12 @@ urlToFile(String imageUrl) async {
 
       print(response.body);
       Map data = json.decode(response.body);
-      String resp = data['photo_url'];
+      Map resp = data['user'];
 
 
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('photo_url', resp);
+        prefs.setString('photo_url', resp['photo_url']);
 
 
           prefs.setString('name', nameTextEditingController.text);
@@ -3162,7 +3162,7 @@ urlToFile(String imageUrl) async {
        prefs.setString('phone', telephoneTextEditingController.text);
 
         prefs.setString('email', emailTextEditingController.text);
-          prefs.setString('linkedin_url', linkedInUrlTextEditingController.text);
+        prefs.setString('linkedin_url', linkedInUrlTextEditingController.text);
 
         //prefs.setString('photo_url', "${response.user.photo_url}");
 

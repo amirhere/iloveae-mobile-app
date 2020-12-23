@@ -8,7 +8,7 @@ class Helper{
 
     //base url
     static String public_url = "https://pitstopsystems.com/iloveae/public/api/";
-    //static String public_url = "http://6c75c7692934.ngrok.io/iloveae/public/";
+   // static String public_url = "http://e2ea480f7552.ngrok.io/iloveae/public/api/";
 
     static String access_token  = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzQ5NTVkNjRiY2Y5YWRlN2Q5NTRmNGNhYjdkMGQxZDkyN2E3MjNmZGIzZTAwZWMwMTQ1NzUwNzYwMDM5NTQ3YjEyYTBhNTY1ZmE1NmJlN2EiLCJpYXQiOjE2MDgwMjI0OTEsIm5iZiI6MTYwODAyMjQ5MSwiZXhwIjoxNjM5NTU4NDkxLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.a-vYhiaKlgYpkRxyXYVZw1XBjW-QkiJTaCIRbMkyN7qurt_xp5OctNPDb7pYr5_5yFpwsk1mMn5Vy-ctfqCgyP2839MopSH0cybT1MxmzUB_Z6vMK4wull-X6RMUQmaEDRnZ6LrIEAWtM_-Zev2dvSg-eW8HxZCBrP4iVJfovdemFkFSZKEYbHKi0XCuLUwLdrDcOE8uHr_PHrUFSoah4SvXGxkETTrWmJl1oQ2PXC_wte2Ki2Tkt1JS8--KveHxj75u-xYsfpEQQoOeZquf-JiU_1ubQkdTscZ6b891loG2WBEJE2GNiYyamSbFbj83ohEJE9AXat_3yCerPvYB0fBY8yVpQoXqZ3qUmeNtSONy3s4SaVgxu-VVJi6kqm7uu_qjW7f_JXuTEZCVXBZfStKyI3pbCcuWZVajEIBdu_xcOntYxIlYqxBVHjxPOg7-UNwN42JFJp5I_scS5_55y386QG52ME6WixR3W2DtASRJdEjYGuRZhBf-X96pDEu8jET4bJXWHHTQKR5_nF31rWKZjshQ3cE5y7_JbAo_isOtkBTmBy-Q_2HSkdGxsWGv5YQ-uMRwNKSg9fHG__IdDfLx9SLWh15JvrezYHG3l6gaxlg2hjh3sY3QRMxR3iRSz79mk0-OQvdY-kQfYu6_pz3_rlWY6Nijy8hZMao1zTA";
 
@@ -73,7 +73,6 @@ class Helper{
         print(date);
 
         var arr = date.split('-');
-
 
         final birthday = DateTime(int.parse(arr[0]),int.parse(arr[1]),int.parse(arr[2]));
         final date2 = DateTime.now();

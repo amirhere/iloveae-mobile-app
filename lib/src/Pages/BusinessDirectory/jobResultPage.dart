@@ -74,6 +74,7 @@ class _JobResultPageState extends State<JobResultPage> {
             itemCount: jobsData == null ? 0 : jobsData.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
+                  color: Theme.of(context).backgroundColor,
                   child: Column(
                 children: <Widget>[
                   /*  Padding(
@@ -99,6 +100,15 @@ class _JobResultPageState extends State<JobResultPage> {
                         ),
                     ),*/
                   Container(
+                    width: width * 0.43,
+                    child: Divider(
+                      thickness: 1.5,
+                      color: Theme.of(context).primaryColor,
+                      height: 1.5,
+                    ),
+                  ),
+                  Container(
+                    color: Theme.of(context).backgroundColor,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -153,10 +163,10 @@ class _JobResultPageState extends State<JobResultPage> {
                   ),
 
                     Container(
-                        width: width * 0.46,
+                        width: width * 0.43,
                         child: Divider(
                             thickness: 1.5,
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                             height: 1.5,
                         ),
                     ),
@@ -202,7 +212,7 @@ class _JobResultPageState extends State<JobResultPage> {
     final width = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: CustomAppBar(
         title: 'Business Directory',
         height: height,
@@ -217,7 +227,7 @@ class _JobResultPageState extends State<JobResultPage> {
           getHeaderWidget(height),
           Container(
             height: height * 0.70,
-            color: Colors.white,
+            color: Theme.of(context).backgroundColor,
             child: getListViewWidget(height, width),
           ),
         ],

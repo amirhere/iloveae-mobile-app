@@ -72,6 +72,9 @@ class _EventsListPageState extends State<EventsListPage> {
             );
 
           },
+          onDoubleTap: (){
+
+          },
           child: getEventTileWidget(width, dataArray[index]),
         );
       },
@@ -81,135 +84,169 @@ class _EventsListPageState extends State<EventsListPage> {
 
 
   Widget getEventTileWidget(width, event) {
-    return Stack(
-      overflow: Overflow.visible,
-      children: [
-        Container(
-          height: 215,
-          child: FittedBox(
-            child: Image.network(event.thumbnail),
-            fit: BoxFit.fill,
-          ),
-        ),
-        Positioned(
-          right: width * 0.13,
-          top: 50,
-          child: Container(
-            child: (event.isLiked == "false")
-                ? IconButton(
-                    icon: new Image.asset("assets/event/heart_white.png"),
-                    onPressed: () {
-                      setState(() {
-                        event.isLiked = "true";
+    return GestureDetector(
+      onDoubleTap: (){
+        setState(() {
 
-                        Toast.show(
-                            "Notifications for " + event.title + " enabled",
-                            context,
-                            duration: Toast.LENGTH_LONG,
-                            gravity: Toast.BOTTOM);
-                      });
-                    },
-                  )
-                : IconButton(
-                    icon: new Image.asset("assets/event/heart_red.png"),
-                    onPressed: () {
-                      setState(() {
-                        event.isLiked = "false";
+          if(event.isLiked == "true"){
+            event.isLiked = "false";
 
-                        Toast.show(
-                            "Notifications for " + event.title + " disabled",
-                            context,
-                            duration: Toast.LENGTH_LONG,
-                            gravity: Toast.BOTTOM);
-                      });
-                    },
-                  ),
+            Toast.show(
+                "Notifications for " + event.title + " disabled",
+                context,
+                duration: Toast.LENGTH_LONG,
+                gravity: Toast.BOTTOM
+            );
+
+          }else{
+
+            event.isLiked = "true";
+
+            Toast.show(
+                "Notifications for " + event.title + " enabled",
+                context,
+                duration: Toast.LENGTH_LONG,
+                gravity: Toast.BOTTOM
+            );
+
+
+          }
+
+
+
+        });
+
+      },
+      child: Stack(
+        overflow: Overflow.visible,
+        children: [
+          Container(
+            height: 215,
+            child: FittedBox(
+              child: Image.network(event.thumbnail),
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        Positioned(
-            top: 145,
-            child: Material(
-              elevation: 5,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.09),
-                height: 70,
-                width: width,
-                color: Theme.of(context).backgroundColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          icon: new Image.asset(
-                            'assets/dob_icon.png',
-                            width: 60.0,
-                            height: 60.0,
-                          ),
-                          onPressed: () {
-                            print('do nothing...!');
-                          },
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 17),
-                            Text(
-                              event.title,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                            Text(
-                              event.date,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            )),
-        Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 140),
-              child: Container(
-                height: 80,
-                width: width * 0.22,
-                margin: EdgeInsets.only(left: width * 0.70),
-                color: Theme.of(context).primaryColor,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "days until",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      Helper.timeDifferenceCalculator(event.date),
-                      style: TextStyle(
-                          fontSize: 36,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                  ],
-                ),
+          Positioned(
+            right: width * 0.13,
+            top: 50,
+            child: Container(
+              child: (event.isLiked == "false")
+                  ? IconButton(
+                icon: new Image.asset("assets/event/heart_white.png"),
+                onPressed: () {
+                 /* setState(() {
+                    event.isLiked = "true";
+
+                    Toast.show(
+                        "Notifications for " + event.title + " enabled",
+                        context,
+                        duration: Toast.LENGTH_LONG,
+                        gravity: Toast.BOTTOM);
+                  });*/
+                },
+              )
+                  : IconButton(
+                icon: new Image.asset("assets/event/heart_red.png"),
+                onPressed: () {
+                  /*setState(() {
+                    event.isLiked = "false";
+
+                    Toast.show(
+                        "Notifications for " + event.title + " disabled",
+                        context,
+                        duration: Toast.LENGTH_LONG,
+                        gravity: Toast.BOTTOM);
+                  });*/
+                },
               ),
             ),
-          ],
-        ),
-      ],
+          ),
+          Positioned(
+              top: 145,
+              child: Material(
+                elevation: 5,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.09),
+                  height: 70,
+                  width: width,
+                  color: Theme.of(context).backgroundColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: new Image.asset(
+                              'assets/dob_icon.png',
+                              width: 60.0,
+                              height: 60.0,
+                            ),
+                            onPressed: () {
+                              print('do nothing...!');
+                            },
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 17),
+                              Text(
+                                event.title,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context).primaryColor),
+                              ),
+                              Text(
+                                event.date,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context).primaryColor),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              )),
+          Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 140),
+                child: Container(
+                  height: 80,
+                  width: width * 0.22,
+                  margin: EdgeInsets.only(left: width * 0.70),
+                  color: Theme.of(context).primaryColor,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "days until",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        Helper.timeDifferenceCalculator(event.date),
+                        style: TextStyle(
+                            fontSize: 36,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
