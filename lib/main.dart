@@ -11,8 +11,6 @@ import 'dart:ui';
 
 void main(){
 
-
-
     runApp(
         LoadingProvider(
             themeData: LoadingThemeData(),
@@ -23,7 +21,6 @@ void main(){
                         height: 20,
                         child: Container(
                             child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white))
-
                             // color: Colors.white,
                         ),
                     ),
