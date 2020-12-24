@@ -80,7 +80,7 @@ class ListViewTileWidget extends PreferredSize {
                         maxHeight: 43,
                       ),
                       child: Text(
-                        dataArray[index]["brief_desc"],
+                        (dataArray[index]["brief_desc"] == null) ? dataArray[index]["description"] : dataArray[index]["brief_desc"],
                         style: TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold),
                       ),
