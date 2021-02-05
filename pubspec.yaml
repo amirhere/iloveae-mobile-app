@@ -45,6 +45,7 @@ dependencies:
   firebase_messaging:
   flutter_local_notifications:
   device_info:
+  cached_network_image:
 
   form_field_validator:
   webview_flutter:
@@ -120,6 +121,8 @@ flutter:
     - assets/blood_request/banners/blood_banner.png
     - assets/event/heart_red.png
     - assets/event/heart_white.png
+    - assets/notification/blood_donations_header.png
+    - assets/event/checked.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

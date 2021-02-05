@@ -465,17 +465,20 @@ class _TourismSearchPageState extends State<TourismSearchPage> {
         bottomNavigationBar: CustomBottomNavigationBar(
           height: height,
         ),
-        body: Column(
-          children: <Widget>[
-            getSearchBarWidget(height * 0.17, width),
-            SizedBox(height: 10),
+        body: GestureDetector(
+          onTap: ()=>  FocusScope.of(context).requestFocus(new FocusNode()),
+          child: Column(
+            children: <Widget>[
+              getSearchBarWidget(height * 0.17, width),
+              SizedBox(height: 10),
 
-            getCategoriesWidget(height, width),
+              getCategoriesWidget(height, width),
 
-            // getGridView(height * 0.88, width),
+              // getGridView(height * 0.88, width),
 
-            //    getGridView(height * 0.88, width),
-          ],
+              //    getGridView(height * 0.88, width),
+            ],
+          ),
         ));
   }
 }

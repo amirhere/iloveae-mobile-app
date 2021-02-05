@@ -442,15 +442,16 @@ class _NewsListPageState extends State<NewsListPage> {
         key: _scaffoldKey,
 
         appBar: CustomAppBar(
+
           title: "News",
+          width: width,
           height: height,
-          width: width * 0.25,
-          // height: 200,
         ),
+
         // CustomAppBar(title: "News"),
 
         //getAppBarWidget('News'),
-        bottomNavigationBar: getBottomNavigationBarWdiget(),
+
         drawer: getDrawerWidget(),
         body: Stack(
           children: <Widget>[
@@ -458,6 +459,9 @@ class _NewsListPageState extends State<NewsListPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+
+
+
                 getCarouselWidget(height),
                 getTabBarWidget(height, width),
               ],

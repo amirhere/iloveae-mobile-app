@@ -43,6 +43,7 @@ class _WelcomePageState extends State<WelcomePage> {
         title = message['data']['blood_type'];
         helper = "You have opened  the app from notification";
 
+
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => NotificationPage(notification: message,)));
 
@@ -78,11 +79,13 @@ class _WelcomePageState extends State<WelcomePage> {
       if(!(preferences.containsKey('device_id'))){
 
           print('registering device to firebase...');
+
           _firebaseMessaging.getToken().then((token) {
               print('device is registered successfully');
               print("****** Device ID *******");
               print("Token is  " + token);
               preferences.setString('device_id', token);
+
               Toast.show(token.toString(),
                   context,
                   duration: Toast.LENGTH_LONG,
@@ -107,7 +110,7 @@ class _WelcomePageState extends State<WelcomePage> {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => HomePage()));
       } else {
-        Timer(Duration(seconds: 8), () {
+        Timer(Duration(seconds: 3), () {
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => LoginPage()));
         });

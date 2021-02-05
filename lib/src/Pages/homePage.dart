@@ -16,6 +16,7 @@ import 'package:flutter_login_signup/src/Pages/Notification/notificationPage.dar
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
 
 
 
@@ -185,10 +186,20 @@ class _HomePageState extends State<HomePage> {
                     email,
                     style: TextStyle(color: Color(0xFFFFFFFF)),
                   ),
-                  currentAccountPicture: CircleAvatar(
+                  currentAccountPicture:
+
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50.0),
+                    child: CachedNetworkImage(
+                      placeholder: (context, url) => CircularProgressIndicator(),
+                      imageUrl: photo_url,
+                    ),
+                  ),
+
+                  /* CircleAvatar(
                     backgroundColor: Colors.red,
                     backgroundImage: NetworkImage(photo_url),
-                  ),
+                  )*/
                 ),
                 ListTile(
                     title: Text(

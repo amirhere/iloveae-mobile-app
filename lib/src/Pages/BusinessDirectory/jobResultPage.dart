@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login_signup/src/Widgets/customBottomNavigationBar.dart';
 import 'package:flutter_login_signup/src/Widgets/customAppBar.dart';
 import 'package:flutter_login_signup/src/Utils/Helper.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+
 
 class JobResultPage extends StatefulWidget {
   String name;
@@ -148,7 +151,8 @@ class _JobResultPageState extends State<JobResultPage> {
                                   child: getRichTextWidget(
                                       "Email", jobsData[index]["email"]),
                                   onTap: () {
-                                    Helper.openMailer(jobsData[index]["email"]);
+                                    //Helper.openMailer(jobsData[index]["email"]);
+                                    launch("tel://"+jobsData[index]["email"]);
                                   },
                                 ),
                                 getRichTextWidget("LinkedIn",
@@ -218,10 +222,7 @@ class _JobResultPageState extends State<JobResultPage> {
         height: height,
         width: width / 11,
       ),
-      bottomNavigationBar: new Container(
-        height: 20.0,
-        color: Color(0xFF573555),
-      ),
+
       body: Column(
         children: <Widget>[
           getHeaderWidget(height),

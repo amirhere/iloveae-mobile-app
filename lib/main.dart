@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:load/load.dart';
 import 'package:flutter_login_signup/src/Pages/welcomePage.dart';
+import 'package:flutter_login_signup/src/Pages/Notification/notificationPage.dart';
 import 'dart:ui';
 
 

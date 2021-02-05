@@ -15,6 +15,8 @@ import 'package:flutter_login_signup/src/Pages/Settings/editProfile.dart';
 
 import 'package:flutter_login_signup/src/Widgets/customAppBar.dart';
 import 'package:flutter_login_signup/src/Widgets/socialMedia.dart';
+import 'package:flutter_html/flutter_html.dart';
+
 
 import 'package:flutter_login_signup/src/Pages/News/newsListPage.dart';
 
@@ -252,11 +254,7 @@ class _TourismArticlePageState extends State<TourismArticlePage> {
                                 width: width,
                                 margin: EdgeInsets.symmetric(horizontal: 30),
                                 padding: EdgeInsets.only(top: 30),
-                                child: Text(
-                                    description + description,
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
+                                child:  Html(data: description),
                             ),
 
                             SizedBox(height: 10),

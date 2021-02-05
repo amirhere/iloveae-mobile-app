@@ -120,10 +120,7 @@ class _NewsPageState extends State<NewsPage> {
           width: width / 3.8,
           // height: 200,
         ),
-        bottomNavigationBar: new Container(
-          height: 20.0,
-          color: Color(0xFF573555),
-        ),
+
         drawer: Theme(
           data: Theme.of(context).copyWith(canvasColor: Color(0xFF81687f)),
           child: Drawer(

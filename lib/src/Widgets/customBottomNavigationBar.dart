@@ -15,7 +15,7 @@ class CustomBottomNavigationBar extends PreferredSize {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height / 30,
+      height: 0,
       color: Theme.of(context).primaryColor,
     );
   }

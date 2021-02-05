@@ -364,6 +364,7 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: CustomAppBar(
         title: 'Blood Request',
@@ -373,36 +374,41 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
       bottomNavigationBar: CustomBottomNavigationBar(
         height: height,
       ),
-      body: Column(
-          children: [
-             // getCarouselWidget(height),
+      body: SingleChildScrollView(
+        child: GestureDetector(
+          onTap: ()=> FocusScope.of(context).requestFocus(new FocusNode()),
+          child: Column(
+            children: [
+              // getCarouselWidget(height),
 
-          Image.asset('assets/blood_request/banners/blood_banner.png'),
+              Image.asset('assets/blood_request/banners/blood_banner.png'),
 
-             Container(
-                 height: height * 0.50,
-                 child:  SingleChildScrollView(
+              Container(
+               // height: height * 0.50,
+                child:  SingleChildScrollView(
 
-                     child: Column(
-                         children: <Widget>[
+                  child: Column(
+                    children: <Widget>[
 
-                             SizedBox(height: height * 0.09),
-                             getBloodRequestFormWidget(height, width),
-                             SizedBox(height: height * 0.03),
-                             GestureDetector(
-                                 onTap: () {
-                                     if (_formKey.currentState.validate()) {
-                                         makeBloodRequestHttpRequest(nameTextEditingController.text, _bloodTypeDropDownValue, hospitalNameTextEditingController.text, contactNameTextEditingController.text, contactNumberTextEditingController.text);
-                                     }
-                                 },
-                                 child: ButtonWidget(label: 'Submit'),
-                             ),
-                             SizedBox(height: height * 0.03),
-                         ],
-                     ),
-                 ),
-             ),
-          ],
+                      SizedBox(height: height * 0.09),
+                      getBloodRequestFormWidget(height, width),
+                      SizedBox(height: height * 0.03),
+                      GestureDetector(
+                        onTap: () {
+                          if (_formKey.currentState.validate()) {
+                            makeBloodRequestHttpRequest(nameTextEditingController.text, _bloodTypeDropDownValue, hospitalNameTextEditingController.text, contactNameTextEditingController.text, contactNumberTextEditingController.text);
+                          }
+                        },
+                        child: ButtonWidget(label: 'Submit'),
+                      ),
+                      SizedBox(height: height * 0.03),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
 
     );

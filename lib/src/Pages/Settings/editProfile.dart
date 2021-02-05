@@ -1592,104 +1592,238 @@ class _EditProfilePageState extends State<EditProfilePage> {
           ));
   }
 
+
+
+
   Widget getTelephoneTextFieldWidget() {
-      return new Stack(
-          children: <Widget>[
-              Container(
-                  //    color: Colors.yellow,
-                  width: 56,
-                  //padding: EdgeInsets.only(left: 44.0),
-                  margin: EdgeInsets.only(
-                      left: 50.0,
-                  ),
-                  child: DropdownButton(
-                      onTap: (){
-                          setState(() {
-                              telephoneColor = _telephoneColors[0];
-                          });
-                      },
-                      hint: _phoneCountryCodeDropDownValue == null
-                          ? Text('Dropdown')
-                          : Text(
-                          _phoneCountryCodeDropDownValue,
-                          style: TextStyle(
-                              color: Color(0xFF573555),
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600),
-                      ),
-                      // isExpanded: true,
-                      // iconSize: 30.0,
+    return Row(
+      children: [
 
-                      style: TextStyle(
-                          color: Color(0xFF573555),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600),
-                      items: _phoneCountryCodeDropDownListItem.map(
-                              (val) {
-                              return DropdownMenuItem<String>(
-                                  value: val,
-                                  child: Text(val),
-                              );
-                          },
-                      ).toList(),
-                      onChanged: (val) {
-                          setState(
-                                  () {
-                                  _phoneCountryCodeDropDownValue = val;
-                              },
-                          );
-                      },
-                  ),
-              ),
-              Container(
-                  // color: Colors.green,
-                  width: 400,
-                  height: 40,
-                  margin: EdgeInsets.only(top: 0.0, left: 100.0),
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: TextField(
-                      onTap: (){
-                          setState(() {
-                              telephoneColor = _telephoneColors[0];
-                          });
-                      },
-                      controller: telephoneTextEditingController,
-                      keyboardType: TextInputType.phone,
-                      cursorColor: Color(0xFF573555),
-                      style: TextStyle(
-                          fontSize: 13,
-                          color: telephoneColor,
-                          fontWeight: FontWeight.bold),
-                      decoration: InputDecoration(
-                          //  labelText: 'Telephone',
-                          labelStyle: TextStyle(
-                              fontSize: 13,
-                              color: telephoneColor,
-                              fontWeight: FontWeight.w600),
 
-                          enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: telephoneColor)),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: telephoneColor)),
-                      ))),
-              Container(
-                  //  color: Colors.purple,
-                  margin: EdgeInsets.only(top: 0.0, left: 0.0),
-                  child: IconButton(
-                      icon: new Image.asset(
-                          'assets/telephone_icon.png',
-                          width: 25.0,
-                          height: 25.0,
-                      ),
-                      onPressed: null,
-                  ),
-              ),
-          ],
-      );
+        Expanded(
+          flex: 1,
+          child: IconButton(
+            icon: new Image.asset(
+              'assets/telephone_icon.png',
+              width: 25.0,
+              height: 25.0,
+            ),
+            onPressed: null,
+          ),
+        ),
+
+
+        Expanded(
+          flex: 2,
+          child: DropdownButton(
+            onTap: () {
+              setState(() {
+                telephoneColor = _telephoneColors[0];
+              });
+            },
+            hint: _phoneCountryCodeDropDownValue == null
+                ? Text('Dropdown')
+                : Text(
+              _phoneCountryCodeDropDownValue,
+              style: TextStyle(
+                  color: Color(0xFF573555),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600),
+            ),
+            // isExpanded: true,
+            // iconSize: 30.0,
+
+            style: TextStyle(
+                color: Color(0xFF573555),
+                fontSize: 13,
+                fontWeight: FontWeight.w600),
+            items: _phoneCountryCodeDropDownListItem.map(
+                  (val) {
+                return DropdownMenuItem<String>(
+                  value: val,
+                  child: Text(val),
+                );
+              },
+            ).toList(),
+            onChanged: (val) {
+              setState(
+                    () {
+                  _phoneCountryCodeDropDownValue = val;
+                },
+              );
+            },
+          ),
+        ),
+
+
+
+        Expanded(
+          flex: 4,
+          child: TextField(
+              onTap: () {
+                setState(() {
+                  telephoneColor = _telephoneColors[0];
+                });
+              },
+              controller: telephoneTextEditingController,
+              keyboardType: TextInputType.phone,
+              cursorColor: Color(0xFF573555),
+              style: TextStyle(
+                  fontSize: 13,
+                  color: telephoneColor,
+                  fontWeight: FontWeight.bold),
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(left: 5),
+                //  labelText: 'Telephone',
+                labelStyle: TextStyle(
+                    fontSize: 13,
+                    color: telephoneColor,
+                    fontWeight: FontWeight.w600),
+
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: telephoneColor)),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: telephoneColor)),
+              )),
+        )
+      ],
+    );
   }
 
 
+
+
+
+
   Widget getMobileTextFieldWidget() {
+    return new Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: IconButton(
+            icon: new Image.asset(
+              'assets/mobile_icon.png',
+              width: 40.0,
+              height: 25.0,
+            ),
+            onPressed: null,
+          ),
+        ),
+        /*Expanded(
+          flex: 2,
+          child: Container(
+
+            child: DropdownButton(
+              hint: _mobileCountryCodeDropDownValue == null
+                  ? Text('Dropdown')
+                  : Text(
+                _mobileCountryCodeDropDownValue,
+                style: TextStyle(
+                    color: Color(0xFF573555),
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600),
+              ),
+              // isExpanded: true,
+              // iconSize: 30.0,
+
+              style: TextStyle(
+                  color: Color(0xFF573555),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600),
+              items: _mobileCountryCodeDropDownListItem.map(
+                    (val) {
+                  return DropdownMenuItem<String>(
+                    value: val,
+                    child: Text(val),
+                  );
+                },
+              ).toList(),
+              onChanged: (val) {
+                setState(
+                      () {
+                    _mobileCountryCodeDropDownValue = val;
+                  },
+                );
+              },
+            ),
+          ),
+        ),*/
+
+
+        Expanded(
+          flex: 2,
+          child: DropdownButton(
+            onTap: () {
+              setState(() {
+                telephoneColor = _telephoneColors[0];
+              });
+            },
+            hint: _mobileCountryCodeDropDownValue == null
+                ? Text('Dropdown')
+                : Text(
+              _mobileCountryCodeDropDownValue,
+              style: TextStyle(
+                  color: Color(0xFF573555),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600),
+            ),
+            // isExpanded: true,
+            // iconSize: 30.0,
+
+            style: TextStyle(
+                color: Color(0xFF573555),
+                fontSize: 13,
+                fontWeight: FontWeight.w600),
+            items: _mobileCountryCodeDropDownListItem.map(
+                  (val) {
+                return DropdownMenuItem<String>(
+                  value: val,
+                  child: Text(val),
+                );
+              },
+            ).toList(),
+            onChanged: (val) {
+              setState(
+                    () {
+                  _mobileCountryCodeDropDownValue = val;
+                },
+              );
+            },
+          ),
+        ),
+        Expanded(
+          flex: 4,
+          child: TextField(
+              onTap: () {
+                setState(() {
+                  mobileColor = _mobileColors[0];
+                });
+              },
+              controller: mobileTextEditingController,
+              keyboardType: TextInputType.phone,
+              cursorColor: Color(0xFF573555),
+              style: TextStyle(
+                  fontSize: 13,
+                  color: Color(0xFF573555),
+                  fontWeight: FontWeight.bold),
+              decoration: InputDecoration(
+                labelText: '',
+                labelStyle: TextStyle(
+                    color: Color(0xFF573555),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13),
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: mobileColor)),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: mobileColor)),
+              )),
+        )
+      ],
+    );
+  }
+
+
+ /* Widget getMobileTextFieldWidget() {
       return new Stack(
           children: <Widget>[
               Container(
@@ -1781,7 +1915,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       );
   }
 
-
+*/
   Widget getStatusTextFieldWidget() {
       return new DropDownField(
           controller: stateTextEditingController,
@@ -3239,159 +3373,163 @@ urlToFile(String imageUrl) async {
                         MaterialPageRoute(builder: (context) => HomePage())),
                 ),
             ),
-            body: Stack(
+            body: new GestureDetector(
+
+              onTap: () =>  FocusScope.of(context).requestFocus(new FocusNode()),
+              child: Stack(
                 children: <Widget>[
-                    Container(
-                        height: height / 3.5,
-                        //   width: 500,
-                        color: Color(0xffc7dceb),
-                        child: Center(
-                            child: GestureDetector(
-                                onTap: () {
-                                    _showPicker(context);
-                                },
-                                child: CircleAvatar(
-                                    radius: 70,
-                                    backgroundColor: Color(0xff573555),
-                                    child: _image != null
-                                        ? ClipRRect(
-                                        borderRadius: BorderRadius.circular(70),
-                                        child: Image.file(
-                                            _image,
-                                            width: 200,
-                                            height: 200,
-                                            fit: BoxFit.fitHeight,
-                                        ),
-                                    )
-                                        : Container(
-                                        decoration: BoxDecoration(
-                                            color: Color(0xFF84849d),
-                                            borderRadius: BorderRadius.circular(70),
-                                        ),
-                                        width: 200,
-                                        height: 200,
-                                        child: Icon(
-                                            Icons.camera_alt,
-                                            color: Theme.of(context).primaryColor,
-                                        ),
-                                    ),
-                                ),
+                  Container(
+                    height: height / 3.5,
+                    //   width: 500,
+                    color: Color(0xffc7dceb),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          _showPicker(context);
+                        },
+                        child: CircleAvatar(
+                          radius: 70,
+                          backgroundColor: Color(0xff573555),
+                          child: _image != null
+                              ? ClipRRect(
+                            borderRadius: BorderRadius.circular(70),
+                            child: Image.file(
+                              _image,
+                              width: 200,
+                              height: 200,
+                              fit: BoxFit.fitHeight,
                             ),
-                        ),
-                    ),
-                    Container(
-                        margin: EdgeInsets.only(top: height / 3.2),
-                        child: SingleChildScrollView(
-                            child: Container(
-                                color: Color(0xFFdde9f2),
-                                padding: EdgeInsets.all(20.0),
-                                margin: EdgeInsets.symmetric(horizontal: 50),
-                                child: Column(
-                                    children: <Widget>[
-                                        getNameTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getFatherNameTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getMotherNameTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getNickNameTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getFamilyNameTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getDOBTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getGenderTextFieldWidget(),
-                                        Divider(
-                                            height: 1,
-                                            color: Theme.of(context).primaryColor,
-                                            thickness: 1,
-                                        ),
-
-                                        getOccupationTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getMaritalTextFieldWidget(),
-                                        Divider(
-                                            height: 1,
-                                            color: Theme.of(context).primaryColor,
-                                            thickness: 1,
-                                        ),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getCountryTextFieldWidget(),
-                                        Divider(
-                                            height: 1,
-                                            color: Theme.of(context).primaryColor,
-                                            thickness: 0.2,
-                                        ),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-
-                                        getCityTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getStreetTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getTelephoneTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getMobileTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getLinkedInUrlTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getEmailTextFieldWidget(),
-                                        SizedBox(
-                                            height: 20,
-                                        ),
-
-                                        getPasswordTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getConfirmPasswordTextFieldWidget(),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        (isProgressBarVisible)
-                                            ? showProgressBar
-                                            : //,
-
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        SizedBox(
-                                            height: 10,
-                                        ),
-                                        getRegistrationButtonWidget(),
-                                    ],
-                                ),
+                          )
+                              : Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFF84849d),
+                              borderRadius: BorderRadius.circular(70),
                             ),
+                            width: 200,
+                            height: 200,
+                            child: Icon(
+                              Icons.camera_alt,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
                         ),
+                      ),
                     ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: height / 3.2),
+                    child: SingleChildScrollView(
+                      child: Container(
+                        color: Color(0xFFdde9f2),
+                        padding: EdgeInsets.all(20.0),
+                        margin: EdgeInsets.symmetric(horizontal: 50),
+                        child: Column(
+                          children: <Widget>[
+                            getNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getFatherNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getMotherNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getNickNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getFamilyNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getDOBTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getGenderTextFieldWidget(),
+                            Divider(
+                              height: 1,
+                              color: Theme.of(context).primaryColor,
+                              thickness: 1,
+                            ),
+
+                            getOccupationTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getMaritalTextFieldWidget(),
+                            Divider(
+                              height: 1,
+                              color: Theme.of(context).primaryColor,
+                              thickness: 1,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getCountryTextFieldWidget(),
+                            Divider(
+                              height: 1,
+                              color: Theme.of(context).primaryColor,
+                              thickness: 0.2,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+
+                            getCityTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getStreetTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getTelephoneTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getMobileTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getLinkedInUrlTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getEmailTextFieldWidget(),
+                            SizedBox(
+                              height: 20,
+                            ),
+
+                            getPasswordTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getConfirmPasswordTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            (isProgressBarVisible)
+                                ? showProgressBar
+                                : //,
+
+                            SizedBox(
+                              height: 10,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getRegistrationButtonWidget(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
+              ),
             ),
         )
     );

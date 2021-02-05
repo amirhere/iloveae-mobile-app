@@ -428,10 +428,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 color: Color(0xFF573555),
             ),
             appBar: AppBar(
+                centerTitle: true,
                 backgroundColor: Color(0xFF573555),
-                title: const Text('Fogot Password Form', style: TextStyle(
+                title: const Text('Reset Password',  style: TextStyle(
                     color: Color(0xFFFFFFFF),
-                ),),
+                fontSize: 15
+            ),),
                 leading: IconButton (
                     icon:Icon(Icons.arrow_back_ios),
                     color: Color(0xFFFFFFFF),

@@ -77,7 +77,8 @@ class SocialMediaWidget extends PreferredSize {
                                 imagePath,
                                 "#ffffff",
                                 "#000000",
-                                deeplink);
+                                deeplink,
+                            );
                         },
                         child: Image.asset(
                             'assets/social_media/instagram.png',

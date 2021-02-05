@@ -552,14 +552,19 @@ class _JobCategoriesPageState extends State<JobCategoriesPage> {
         bottomNavigationBar: CustomBottomNavigationBar(
           height: height,
         ),
-        body: Column(
-          children: <Widget>[
-              getSearchBarWidget(height * 0.17, width),
+        body: new GestureDetector(
+          onTap: ()=> FocusScope.of(context).requestFocus(new FocusNode()),
+          child: Container(
+            child: Column(
+              children: <Widget>[
 
-              getGridView(height * 0.845, width),
+                getSearchBarWidget(height * 0.17, width),
+                getGridView(height * 0.845, width),
 
-        //    getGridView(height * 0.88, width),
-          ],
+                //    getGridView(height * 0.88, width),
+              ],
+            ),
+          ),
         ));
   }
 }

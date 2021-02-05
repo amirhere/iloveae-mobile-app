@@ -345,25 +345,29 @@ class _LoginPageState extends State<LoginPage> {
 
 
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 40),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+      body: new GestureDetector(
+        onTap: ()=> FocusScope.of(context).requestFocus(new FocusNode()),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
 
-            SizedBox(height: 50),
-            _emailPasswordWidget(),
-            SizedBox(height: 20),
+              SizedBox(height: 50),
+              _emailPasswordWidget(),
+              SizedBox(height: 20),
 
-            _submitButtonWidget(),
-            _forgotPasswordWidget(),
-            _dividerWidget(),
-            // _facebookButton(),
-            SizedBox(height: 10),
-            _createAccountLabel(),
-          ],
+              _submitButtonWidget(),
+              _forgotPasswordWidget(),
+              _dividerWidget(),
+              // _facebookButton(),
+              SizedBox(height: 10),
+              _createAccountLabel(),
+            ],
+          ),
         ),
+
       ),
     );
   }

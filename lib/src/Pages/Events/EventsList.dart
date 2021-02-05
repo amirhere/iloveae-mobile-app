@@ -49,6 +49,19 @@ class _EventsListPageState extends State<EventsListPage> {
     setState(
       () {
         eventsDataList = data.map((val) => Event.fromJson(val)).toList();
+        for(var loop = 0; loop < eventsDataList.length; loop++){
+         Event event =  eventsDataList.elementAt(loop);
+
+          if(Helper.timeDifferenceCalculator(event.date).contains("-")){
+            eventsDataList.remove(event);
+            eventsDataList.add(event);
+          }
+
+        }
+
+
+
+
       },
     );
   }
@@ -59,7 +72,6 @@ class _EventsListPageState extends State<EventsListPage> {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           onTap: () {
-
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => EventPage(
@@ -70,53 +82,34 @@ class _EventsListPageState extends State<EventsListPage> {
                     images: dataArray[index].eventImages),
               ),
             );
-
           },
-          onDoubleTap: (){
-
-          },
+          onDoubleTap: () {},
           child: getEventTileWidget(width, dataArray[index]),
         );
       },
     );
   }
 
-
-
   Widget getEventTileWidget(width, event) {
     return GestureDetector(
-      onDoubleTap: (){
+      onDoubleTap: () {
         setState(() {
-
-          if(event.isLiked == "true"){
+          if (event.isLiked == "true") {
             event.isLiked = "false";
 
             Toast.show(
-                "Notifications for " + event.title + " disabled",
-                context,
-                duration: Toast.LENGTH_LONG,
-                gravity: Toast.BOTTOM
-            );
-
-          }else{
-
+                "Notifications for " + event.title + " disabled", context,
+                duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+          } else {
             event.isLiked = "true";
 
-            Toast.show(
-                "Notifications for " + event.title + " enabled",
-                context,
-                duration: Toast.LENGTH_LONG,
-                gravity: Toast.BOTTOM
-            );
-
-
+            Toast.show("Notifications for " + event.title + " enabled", context,
+                duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
           }
-
-
-
         });
-
       },
+
+
       child: Stack(
         overflow: Overflow.visible,
         children: [
@@ -133,9 +126,9 @@ class _EventsListPageState extends State<EventsListPage> {
             child: Container(
               child: (event.isLiked == "false")
                   ? IconButton(
-                icon: new Image.asset("assets/event/heart_white.png"),
-                onPressed: () {
-                 /* setState(() {
+                      icon: new Image.asset("assets/event/heart_white.png"),
+                      onPressed: () {
+                         setState(() {
                     event.isLiked = "true";
 
                     Toast.show(
@@ -143,13 +136,13 @@ class _EventsListPageState extends State<EventsListPage> {
                         context,
                         duration: Toast.LENGTH_LONG,
                         gravity: Toast.BOTTOM);
-                  });*/
-                },
-              )
+                  });
+                      },
+                    )
                   : IconButton(
-                icon: new Image.asset("assets/event/heart_red.png"),
-                onPressed: () {
-                  /*setState(() {
+                      icon: new Image.asset("assets/event/heart_red.png"),
+                      onPressed: () {
+                        setState(() {
                     event.isLiked = "false";
 
                     Toast.show(
@@ -157,59 +150,60 @@ class _EventsListPageState extends State<EventsListPage> {
                         context,
                         duration: Toast.LENGTH_LONG,
                         gravity: Toast.BOTTOM);
-                  });*/
-                },
-              ),
+                  });
+                      },
+                    ),
             ),
           ),
           Positioned(
-              top: 145,
-              child: Material(
-                elevation: 5,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: width * 0.09),
-                  height: 70,
-                  width: width,
-                  color: Theme.of(context).backgroundColor,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            icon: new Image.asset(
-                              'assets/dob_icon.png',
-                              width: 60.0,
-                              height: 60.0,
+            top: 149,
+            child: Material(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.09),
+                height: 70,
+                width: width,
+                color: Theme.of(context).backgroundColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: new Image.asset(
+                            'assets/dob_icon.png',
+                            width: 60.0,
+                            height: 60.0,
+                          ),
+                          onPressed: () {
+                            print('do nothing...!');
+                          },
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 17),
+                            Text(
+                              event.title,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Theme.of(context).primaryColor),
                             ),
-                            onPressed: () {
-                              print('do nothing...!');
-                            },
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 17),
-                              Text(
-                                event.title,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor),
-                              ),
-                              Text(
-                                event.date,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                            Text(
+                              event.date,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              )),
+              ),
+            ),
+          ),
           Stack(
             children: [
               Padding(
@@ -219,7 +213,8 @@ class _EventsListPageState extends State<EventsListPage> {
                   width: width * 0.22,
                   margin: EdgeInsets.only(left: width * 0.70),
                   color: Theme.of(context).primaryColor,
-                  child: Column(
+                  child: (Helper.timeDifferenceCalculator(event.date).contains("-")) ? Container( height:20, width:20,child: Image.asset("assets/event/checked.png"),):
+                  Column(
                     children: [
                       SizedBox(
                         height: 10,
@@ -240,7 +235,8 @@ class _EventsListPageState extends State<EventsListPage> {
                         height: 5,
                       ),
                     ],
-                  ),
+                  )
+
                 ),
               ),
             ],
@@ -249,6 +245,10 @@ class _EventsListPageState extends State<EventsListPage> {
       ),
     );
   }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {

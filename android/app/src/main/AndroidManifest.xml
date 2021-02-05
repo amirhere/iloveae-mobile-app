@@ -18,7 +18,8 @@
         android:usesCleartextTraffic="true"
         android:name=".Application"
         android:label="I love AE"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"  >
 
 
         <uses-library

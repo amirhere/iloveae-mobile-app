@@ -28,18 +28,18 @@ class CustomAppBar extends PreferredSize {
 
         return AppBar(
             backgroundColor: Theme.of(context).primaryColor,
-            title:  Center(
-
-                child: Text(
-                    title,
-                    style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 15
-                    ),
+            centerTitle: true,
+            title:  Text(
+                title,
+                style: TextStyle(
+                    color: Color(0xFFFFFFFF),
+                    fontSize: 15
                 ),
             ),
 
             actions: <Widget>[
+
+            (title == "Home") ?
                 IconButton(
                     icon: Icon(
                         Icons.notifications,
@@ -48,7 +48,7 @@ class CustomAppBar extends PreferredSize {
                     onPressed: () {
                         // do something
                     },
-                )
+                ): SizedBox()
 
             ],
            

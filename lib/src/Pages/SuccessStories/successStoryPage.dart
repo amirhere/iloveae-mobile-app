@@ -12,6 +12,9 @@ import 'package:flutter_login_signup/src/Widgets/socialMedia.dart';
 import 'package:flutter_login_signup/src/Widgets/carouselWidget.dart';
 import 'package:flutter_login_signup/src/Widgets/customBottomNavigationBar.dart';
 
+import 'package:flutter_html/flutter_html.dart';
+
+
 import 'package:flutter_login_signup/src/Pages/News/newsListPage.dart';
 
 class SuccessStoryPage extends StatefulWidget {
@@ -240,11 +243,7 @@ class _SuccessStoryPage extends State<SuccessStoryPage> {
                             width: width,
                             margin: EdgeInsets.symmetric(horizontal: 30),
                             padding: EdgeInsets.only(top: 5),
-                            child: Text(
-                                description,
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
+                          child:  Html(data: description),
                         ),
                         SizedBox(
                             height: 10,

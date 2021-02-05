@@ -10,6 +10,10 @@ import 'package:flutter_login_signup/src/Widgets/customAppBar.dart';
 import 'package:flutter_login_signup/src/Widgets/socialMedia.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_login_signup/src/Utils/Helper.dart';
+
+
 
 
 class EventPage extends StatefulWidget {
@@ -334,7 +338,7 @@ class _EventPageState extends State<EventPage> {
                                                                 color: Colors.white, fontWeight: FontWeight.w600),
                                                         ),
                                                         Text(
-                                                            "5",
+                                                            Helper.timeDifferenceCalculator(date),
                                                             style: TextStyle(
                                                                 fontSize: 36,
                                                                 color: Colors.white,
@@ -356,11 +360,7 @@ class _EventPageState extends State<EventPage> {
                                     width: width,
                                     margin: EdgeInsets.symmetric(horizontal: 30),
                                     padding: EdgeInsets.only(top: 30),
-                                    child: Text(
-                                        description,
-                                        textAlign: TextAlign.justify,
-                                        style: TextStyle(fontWeight: FontWeight.bold),
-                                    ),
+                                    child:  Html(data: description),
                                 ),
 
 

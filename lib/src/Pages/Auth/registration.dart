@@ -252,7 +252,7 @@ class _AccountPageState extends State<AccountPage> {
 
   String selectMaritalStatus = "";
 
-  List selectedValuesFromOccupationList=[];
+  List selectedValuesFromOccupationList = [];
   String _occupationDropDownValue = 'Occupation *';
   String _secondOccupationDropDownValue = 'Other Occupation *';
   String _maritalStatusDropDownValue = 'Marital Status *';
@@ -753,7 +753,6 @@ class _AccountPageState extends State<AccountPage> {
     "+389",
     "+39",
     "+39-",
-
     "+40",
     "+41",
     "+42",
@@ -1225,42 +1224,39 @@ class _AccountPageState extends State<AccountPage> {
   List<Color> _mobileColors = [Color(0xFF573555), Colors.red];
   Color mobileColor;
 
-
   FocusNode _focus = new FocusNode();
 
   List fullTaskDetailsList = [];
   List taskDetailsList = [];
-  String typedOccupation =  "";
+  String typedOccupation = "";
   TextEditingController mycontroller = TextEditingController();
   List checkedFlag = List.filled(countryList.length, false);
+
   void searchMethodWithTest(String text) {
-      List result = [];
-      print("Text: " + text.length.toString());
-      if (mycontroller.text.isNotEmpty) {
-          fullTaskDetailsList.forEach((element) {
-              text = text.trim();
-              print(element['name']);
-              typedOccupation = element['name'];
+    List result = [];
+    print("Text: " + text.length.toString());
+    if (mycontroller.text.isNotEmpty) {
+      fullTaskDetailsList.forEach((element) {
+        text = text.trim();
+        print(element['name']);
+        typedOccupation = element['name'];
 
-              if (element["name"].toLowerCase().contains(text)) {
-                  result.add(element);
-              }
-          });
-          print(taskDetailsList.toString());
-          setState(() {
-              taskDetailsList = result;
-          });
-          return;
-      } else {
-          setState(() {
-              taskDetailsList = fullTaskDetailsList;
-          });
-          return;
-      }
+        if (element["name"].toLowerCase().contains(text)) {
+          result.add(element);
+        }
+      });
+      print(taskDetailsList.toString());
+      setState(() {
+        taskDetailsList = result;
+      });
+      return;
+    } else {
+      setState(() {
+        taskDetailsList = fullTaskDetailsList;
+      });
+      return;
+    }
   }
-
-
-
 
   Widget _backButton() {
     return InkWell(
@@ -1640,15 +1636,25 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget getTelephoneTextFieldWidget() {
-    return new Stack(
-      children: <Widget>[
-        Container(
-             // color: Colors.yellow,
-          width: 60,
-          //padding: EdgeInsets.only(left: 44.0),
-          margin: EdgeInsets.only(
-            left: 50.0,
+    return Row(
+      children: [
+
+
+        Expanded(
+          flex: 1,
+          child: IconButton(
+            icon: new Image.asset(
+              'assets/telephone_icon.png',
+              width: 25.0,
+              height: 25.0,
+            ),
+            onPressed: null,
           ),
+        ),
+
+
+        Expanded(
+          flex: 2,
           child: DropdownButton(
             onTap: () {
               setState(() {
@@ -1688,52 +1694,175 @@ class _AccountPageState extends State<AccountPage> {
             },
           ),
         ),
-        Container(
-            // color: Colors.green,
-            width: 400,
-            height: 40,
-            margin: EdgeInsets.only(top: 0.0, left: 115.0),            padding: EdgeInsets.only(left: 5.0),
-            child: TextField(
-                onTap: () {
-                  setState(() {
-                    telephoneColor = _telephoneColors[0];
-                  });
-                },
-                controller: telephoneTextEditingController,
-                keyboardType: TextInputType.phone,
-                cursorColor: Color(0xFF573555),
-                style: TextStyle(
+
+
+
+        Expanded(
+          flex: 4,
+          child: TextField(
+              onTap: () {
+                setState(() {
+                  telephoneColor = _telephoneColors[0];
+                });
+              },
+              controller: telephoneTextEditingController,
+              keyboardType: TextInputType.phone,
+              cursorColor: Color(0xFF573555),
+              style: TextStyle(
+                  fontSize: 13,
+                  color: telephoneColor,
+                  fontWeight: FontWeight.bold),
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(left: 5),
+                //  labelText: 'Telephone',
+                labelStyle: TextStyle(
                     fontSize: 13,
                     color: telephoneColor,
-                    fontWeight: FontWeight.bold),
-                decoration: InputDecoration(
-                  //  labelText: 'Telephone',
-                  labelStyle: TextStyle(
-                      fontSize: 13,
-                      color: telephoneColor,
-                      fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w600),
 
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: telephoneColor)),
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: telephoneColor)),
-                ))),
-        Container(
-          //  color: Colors.purple,
-          margin: EdgeInsets.only(top: 0.0, left: 0.0),
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: telephoneColor)),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: telephoneColor)),
+              )),
+        )
+      ],
+    );
+  }
+
+
+
+
+
+
+  Widget getMobileTextFieldWidget() {
+    return new Row(
+      children: [
+        Expanded(
+          flex: 1,
           child: IconButton(
             icon: new Image.asset(
-              'assets/telephone_icon.png',
-              width: 25.0,
+              'assets/mobile_icon.png',
+              width: 40.0,
               height: 25.0,
             ),
             onPressed: null,
           ),
         ),
+        /*Expanded(
+          flex: 2,
+          child: Container(
+
+            child: DropdownButton(
+              hint: _mobileCountryCodeDropDownValue == null
+                  ? Text('Dropdown')
+                  : Text(
+                _mobileCountryCodeDropDownValue,
+                style: TextStyle(
+                    color: Color(0xFF573555),
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600),
+              ),
+              // isExpanded: true,
+              // iconSize: 30.0,
+
+              style: TextStyle(
+                  color: Color(0xFF573555),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600),
+              items: _mobileCountryCodeDropDownListItem.map(
+                    (val) {
+                  return DropdownMenuItem<String>(
+                    value: val,
+                    child: Text(val),
+                  );
+                },
+              ).toList(),
+              onChanged: (val) {
+                setState(
+                      () {
+                    _mobileCountryCodeDropDownValue = val;
+                  },
+                );
+              },
+            ),
+          ),
+        ),*/
+
+
+        Expanded(
+          flex: 2,
+          child: DropdownButton(
+            onTap: () {
+              setState(() {
+                telephoneColor = _telephoneColors[0];
+              });
+            },
+            hint: _mobileCountryCodeDropDownValue == null
+                ? Text('Dropdown')
+                : Text(
+              _mobileCountryCodeDropDownValue,
+              style: TextStyle(
+                  color: Color(0xFF573555),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600),
+            ),
+            // isExpanded: true,
+            // iconSize: 30.0,
+
+            style: TextStyle(
+                color: Color(0xFF573555),
+                fontSize: 13,
+                fontWeight: FontWeight.w600),
+            items: _mobileCountryCodeDropDownListItem.map(
+                  (val) {
+                return DropdownMenuItem<String>(
+                  value: val,
+                  child: Text(val),
+                );
+              },
+            ).toList(),
+            onChanged: (val) {
+              setState(
+                    () {
+                  _mobileCountryCodeDropDownValue = val;
+                },
+              );
+            },
+          ),
+        ),
+        Expanded(
+          flex: 4,
+          child: TextField(
+              onTap: () {
+                setState(() {
+                  mobileColor = _mobileColors[0];
+                });
+              },
+              controller: mobileTextEditingController,
+              keyboardType: TextInputType.phone,
+              cursorColor: Color(0xFF573555),
+              style: TextStyle(
+                  fontSize: 13,
+                  color: Color(0xFF573555),
+                  fontWeight: FontWeight.bold),
+              decoration: InputDecoration(
+                labelText: '',
+                labelStyle: TextStyle(
+                    color: Color(0xFF573555),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13),
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: mobileColor)),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: mobileColor)),
+              )),
+        )
       ],
     );
   }
 
+/*
   Widget getMobileTextFieldWidget() {
     return new Stack(
       children: <Widget>[
@@ -1823,7 +1952,10 @@ class _AccountPageState extends State<AccountPage> {
         ),
       ],
     );
-  }
+  }*/
+
+
+
 
   Widget getStatusTextFieldWidget() {
     return new DropDownField(
@@ -2167,7 +2299,7 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
- /* Widget getOccupationTextFieldWidget() {
+  /* Widget getOccupationTextFieldWidget() {
     return Stack(
       children: <Widget>[
         GestureDetector(
@@ -2239,147 +2371,135 @@ class _AccountPageState extends State<AccountPage> {
   }
 */
 
+  Widget getOccupationTextFieldWidget() {
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            SizedBox(height: 8),
+            TextField(
+                onTap: () {
+                  setState(() {
+                    //mycontroller.text = '';
+                    occupationColor = _occupationColors[0];
+                  });
+                },
+                focusNode: _focus,
+                controller: mycontroller,
+                onChanged: (value) {
+                  searchMethodWithTest(mycontroller.text.toLowerCase());
+                },
+                style: TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF573555),
+                    fontWeight: FontWeight.bold),
+                cursorColor: Color(0xFF573555),
+                decoration: InputDecoration(
+                  prefixIcon: IconButton(
+                    icon: new Image.asset(
+                      'assets/occupation_icon.png',
+                      width: 25.0,
+                      height: 25.0,
+                    ),
+                    onPressed: null,
+                  ),
+                  labelText: 'Select Occupation',
+                  labelStyle: TextStyle(
+                    color: occupationColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Theme.of(context).primaryColor)),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Theme.of(context).primaryColor)),
+                )),
 
- Widget getOccupationTextFieldWidget(){
-     return SingleChildScrollView(
-         child: Center(
-             child: Column(
-                 children: [
-                     SizedBox(height: 8),
-                     TextField(
+            (selectedValuesFromOccupationList.length > 0)
+                ? Text(
+                    "Selected: " + selectedValuesFromOccupationList.toString(),
+                    style: TextStyle(fontSize: 11),
+                  )
+                : SizedBox(),
 
-                         onTap: () {
-                             setState(() {
-                                 //mycontroller.text = '';
-                                 occupationColor = _occupationColors[0];
-                             });
-                         },
+            //  for ( var i in selectedValuesFromOccupationList ) Padding(padding: EdgeInsets.only(right:100), child: Text(i.toString()),),
+            //   Text("Searched for: ${mycontroller.text}"),
 
+            (_focus.hasFocus)
+                ? Container(
+                    width: double.infinity,
+                    height: 200.0,
+                    child: ListView.builder(
+                        itemCount: taskDetailsList.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            leading: Checkbox(
+                                value: taskDetailsList[index]["checked"],
+                                onChanged: (value) {
+                                  String name = taskDetailsList[index]["name"];
+                                  if (value) {
+                                    selectedValuesFromOccupationList.add(name);
+                                  } else {
+                                    if (selectedValuesFromOccupationList
+                                        .contains(name)) {
+                                      selectedValuesFromOccupationList
+                                          .remove(name);
+                                    }
+                                  }
 
-                         focusNode: _focus,
-                         controller: mycontroller,
+                                  print(selectedValuesFromOccupationList);
 
-                         onChanged: (value) {
-                             searchMethodWithTest(mycontroller.text.toLowerCase());
-                         },
-                         style: TextStyle(
-                             fontSize: 13,
-                             color: Color(0xFF573555),
-                             fontWeight: FontWeight.bold),
-                         cursorColor: Color(0xFF573555),
-                         decoration: InputDecoration(
-                             prefixIcon: IconButton(
-                                 icon: new Image.asset(
-                                     'assets/occupation_icon.png',
-                                     width: 25.0,
-                                     height: 25.0,
-                                 ),
-                                 onPressed: null,
-                             ),
-                             labelText: 'Select Occupation',
-                             labelStyle: TextStyle(
-                                 color: occupationColor,
-                                 fontWeight: FontWeight.w600,
-                                 fontSize: 13,
-                             ),
-                             enabledBorder: UnderlineInputBorder(
-                                 borderSide:
-                                 BorderSide(color: Theme.of(context).primaryColor)),
-                             focusedBorder: UnderlineInputBorder(
-                                 borderSide:
-                                 BorderSide(color: Theme.of(context).primaryColor)),
-                         )
-
-                     ),
-
-
-
-             (selectedValuesFromOccupationList.length > 0 )?
-
-                     Text("Selected: " + selectedValuesFromOccupationList.toString(), style: TextStyle(fontSize: 11),):
-                 SizedBox(),
-
-                   //  for ( var i in selectedValuesFromOccupationList ) Padding(padding: EdgeInsets.only(right:100), child: Text(i.toString()),),
-                     //   Text("Searched for: ${mycontroller.text}"),
-
-                     (_focus.hasFocus)?
-                     Container(
-                         width: double.infinity,
-                         height: 200.0,
-                         child: ListView.builder(
-                             itemCount: taskDetailsList.length,
-                             itemBuilder: (context, index) {
-                                 return ListTile(
-                                     leading: Checkbox(
-                                         value: taskDetailsList[index]["checked"],
-                                         onChanged: (value) {
-
-
-                                             String name = taskDetailsList[index]["name"];
-                                             if(value){
-                                                 selectedValuesFromOccupationList.add(name);
-                                             }else{
-
-                                                 if(selectedValuesFromOccupationList.contains(name)){
-                                                     selectedValuesFromOccupationList.remove(name);
-                                                 }
-
-                                             }
-
-                                             print(selectedValuesFromOccupationList);
-
-                                             List temp = [];
-                                             fullTaskDetailsList.forEach((element) {
-                                                 if (element["name"] == name) {
-                                                     temp.add({
-                                                         "name": name,
-                                                         "checked": !element["checked"]
-                                                     });
-                                                 } else {
-                                                     temp.add(element);
-                                                 }
-                                             });
-                                             setState(() {
-                                                 fullTaskDetailsList = temp;
-                                             });
-                                             searchMethodWithTest(mycontroller.text.toLowerCase());
-                                         }),
-                                     title: Text(
-                                         (taskDetailsList[index]["name"] !=null) ? taskDetailsList[index]["name"]:'hola',
-                                         style: TextStyle(
-                                             fontSize: 12.0,
-                                         ),
-                                     ),
-                                 );
-                             }),
-                     ):SizedBox()
-                 ],
-             ),
-         ),
-     );
- }
-
-
-
+                                  List temp = [];
+                                  fullTaskDetailsList.forEach((element) {
+                                    if (element["name"] == name) {
+                                      temp.add({
+                                        "name": name,
+                                        "checked": !element["checked"]
+                                      });
+                                    } else {
+                                      temp.add(element);
+                                    }
+                                  });
+                                  setState(() {
+                                    fullTaskDetailsList = temp;
+                                  });
+                                  searchMethodWithTest(
+                                      mycontroller.text.toLowerCase());
+                                }),
+                            title: Text(
+                              (taskDetailsList[index]["name"] != null)
+                                  ? taskDetailsList[index]["name"]
+                                  : 'hola',
+                              style: TextStyle(
+                                fontSize: 12.0,
+                              ),
+                            ),
+                          );
+                        }),
+                  )
+                : SizedBox()
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget getListViewWidget(double height, double width, var dataArray) {
-      return ListView.builder(
-          itemCount: dataArray == null ? 0 : dataArray.length,
-          itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                  onTap: () {
+    return ListView.builder(
+      itemCount: dataArray == null ? 0 : dataArray.length,
+      itemBuilder: (BuildContext context, int index) {
+        return GestureDetector(
+            onTap: () {},
+            child: ListViewTileWidget(
+              height: height,
+              width: width,
+              dataArray: dataArray,
+              index: index,
+            )
 
-
-                  },
-                  child: ListViewTileWidget(
-                      height: height ,
-                      width: width,
-                      dataArray: dataArray,
-                      index: index,
-                  )
-
-
-                  /* Expanded(
+            /* Expanded(
             child: Card(
               child: Row(
                 children: <Widget>[
@@ -2430,14 +2550,10 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),*/
 
-              );
-          },
-      );
+            );
+      },
+    );
   }
-
-
-
-
 
 /*
   Widget getOccupationTextFieldWidget() {
@@ -2897,7 +3013,7 @@ class _AccountPageState extends State<AccountPage> {
         if (selectedValuesFromOccupationList.length == 0)
           occupationColor = _occupationColors[1];
 
-       /* if (occupationTextEditingController.text == "Occupation *")
+        /* if (occupationTextEditingController.text == "Occupation *")
           occupationColor = _occupationColors[1];*/
 
         if (countryTextEditingController.text.length == 0) {
@@ -2994,7 +3110,7 @@ class _AccountPageState extends State<AccountPage> {
                                           }
                                         } else {
                                           Toast.show(
-                                              "Password should be atleast  8 charaacters",
+                                              "password length should be at least 8 characters",
                                               context,
                                               duration: Toast.LENGTH_LONG,
                                               gravity: Toast.BOTTOM);
@@ -3143,22 +3259,16 @@ class _AccountPageState extends State<AccountPage> {
     telephoneColor = _telephoneColors[0];
     mobileColor = _mobileColors[0];
 
-
     _focus.addListener(_onFocusChange);
 
     fullTaskDetailsList = countryList;
     taskDetailsList = fullTaskDetailsList;
     super.initState();
-
-
   }
 
-    void _onFocusChange(){
-        debugPrint("Focus: "+_focus.hasFocus.toString());
-    }
-
-
-
+  void _onFocusChange() {
+    debugPrint("Focus: " + _focus.hasFocus.toString());
+  }
 
   /*   Image Picker Snippet  */
   File _image;
@@ -3307,35 +3417,28 @@ class _AccountPageState extends State<AccountPage> {
     visible: true,
   );
 
-
-
-
-
-
-    void filterSearchResults(String query) {
-        List<String> dummySearchList = List<String>();
-        _countryDropDownListItem.addAll(_countryDropDownListItem);
-        if(query.isNotEmpty) {
-            List<String> dummyListData = List<String>();
-            dummySearchList.forEach((item) {
-                if(item.contains(query)) {
-                    dummyListData.add(item);
-                }
-            });
-            setState(() {
-                _countryDropDownListItem.clear();
-                _countryDropDownListItem.addAll(dummyListData);
-            });
-            return;
-        } else {
-            setState(() {
-                _countryDropDownListItem.clear();
-                _countryDropDownListItem.addAll(_countryDropDownListItem);
-            });
+  void filterSearchResults(String query) {
+    List<String> dummySearchList = List<String>();
+    _countryDropDownListItem.addAll(_countryDropDownListItem);
+    if (query.isNotEmpty) {
+      List<String> dummyListData = List<String>();
+      dummySearchList.forEach((item) {
+        if (item.contains(query)) {
+          dummyListData.add(item);
         }
-
+      });
+      setState(() {
+        _countryDropDownListItem.clear();
+        _countryDropDownListItem.addAll(dummyListData);
+      });
+      return;
+    } else {
+      setState(() {
+        _countryDropDownListItem.clear();
+        _countryDropDownListItem.addAll(_countryDropDownListItem);
+      });
     }
-
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -3353,63 +3456,65 @@ class _AccountPageState extends State<AccountPage> {
         height: height,
         width: width / 8,
       ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 0),
-            child: SingleChildScrollView(
-              child: Container(
-                //   color: Color(0xFFdde9f2),
-                padding: EdgeInsets.all(20.0),
-                margin: EdgeInsets.symmetric(horizontal: 35),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      height: height / 3.5,
+      body: new GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(top: 0),
+              child: SingleChildScrollView(
+                child: Container(
+                  //   color: Color(0xFFdde9f2),
+                  padding: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.symmetric(horizontal: 35),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        height: height / 3.5,
 
-                      //   width: 500,
-                      color: Color(0xffc7dceb),
-                      child: Center(
-                          child: GestureDetector(
-                              onTap: () {
-                                _showPicker(context);
-                              },
-                              child: CircleAvatar(
-                                radius: 70,
-                                backgroundColor: Color(0xff573555),
-                                child: _image != null
-                                    ? ClipRRect(
-                                        borderRadius: BorderRadius.circular(70),
-                                        child: Image.file(
-                                          _image,
-                                          width: 200,
-                                          height: 200,
-                                          fit: BoxFit.fitHeight,
-                                        ),
-                                      )
-                                    : Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF84849d),
+                        //   width: 500,
+                        color: Color(0xffc7dceb),
+                        child: Center(
+                            child: GestureDetector(
+                                onTap: () {
+                                  _showPicker(context);
+                                },
+                                child: CircleAvatar(
+                                  radius: 70,
+                                  backgroundColor: Color(0xff573555),
+                                  child: _image != null
+                                      ? ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(70),
+                                          child: Image.file(
+                                            _image,
+                                            width: 200,
+                                            height: 200,
+                                            fit: BoxFit.fitHeight,
+                                          ),
+                                        )
+                                      : Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF84849d),
+                                            borderRadius:
+                                                BorderRadius.circular(70),
+                                          ),
+                                          width: 200,
+                                          height: 200,
+                                          child: Icon(
+                                            Icons.camera_alt,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
                                         ),
-                                        width: 200,
-                                        height: 200,
-                                        child: Icon(
-                                          Icons.camera_alt,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      ),
-                              ))),
-                    ),
-                    Container(
-                      color: Color(0xFFdde9f2),
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: Column(
-                        children: <Widget>[
-
-
-                         /*   Padding(
+                                ))),
+                      ),
+                      Container(
+                        color: Color(0xFFdde9f2),
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Column(
+                          children: <Widget>[
+                            /*   Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextField(
                                     onChanged: (value) {
@@ -3436,461 +3541,459 @@ class _AccountPageState extends State<AccountPage> {
                                 ),
                             ),
 */
-                          getNameTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getFatherNameTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getMotherNameTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getNickNameTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getFamilyNameTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getDOBTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getGenderTextFieldWidget(width),
-                          Divider(
-                            height: 1,
-                            color: Theme.of(context).primaryColor,
-                            thickness: 1,
-                          ),
-                          getOccupationTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getMaritalTextFieldWidget(),
-                          Divider(
-                            height: 1,
-                            color: Theme.of(context).primaryColor,
-                            thickness: 1,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getCountryTextFieldWidget(),
-                          Divider(
-                            height: 1,
-                            color: Theme.of(context).primaryColor,
-                            thickness: 0.3,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getCityTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getStreetTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getTelephoneTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getMobileTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getLinkedInUrlTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getEmailTextFieldWidget(),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          getPasswordTextFieldWidget(),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getConfirmPasswordTextFieldWidget(),
-                          (isProgressBarVisible)
-                              ? showProgressBar
-                              : //,
+                            getNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getFatherNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getMotherNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getNickNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getFamilyNameTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getDOBTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getGenderTextFieldWidget(width),
+                            Divider(
+                              height: 1,
+                              color: Theme.of(context).primaryColor,
+                              thickness: 1,
+                            ),
+                            getOccupationTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getMaritalTextFieldWidget(),
+                            Divider(
+                              height: 1,
+                              color: Theme.of(context).primaryColor,
+                              thickness: 1,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getCountryTextFieldWidget(),
+                            Divider(
+                              height: 1,
+                              color: Theme.of(context).primaryColor,
+                              thickness: 0.3,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getCityTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getStreetTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getTelephoneTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getMobileTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getLinkedInUrlTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getEmailTextFieldWidget(),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            getPasswordTextFieldWidget(),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getConfirmPasswordTextFieldWidget(),
+                            (isProgressBarVisible)
+                                ? showProgressBar
+                                : //,
 
-                              SizedBox(
-                                  height: 10,
-                                ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          getRegistrationButtonWidget(),
-                          SizedBox(
-                            height: 20,
-                          ),
-                        ],
+                                SizedBox(
+                                    height: 10,
+                                  ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            getRegistrationButtonWidget(),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
-
-const countryList  = [
-{"name":"Academic librarian", "checked": false} ,
-{"name":"Accountant", "checked": false} ,
-
-{"name":"Accounting technician", "checked": false} ,
-{"name":"Actuary", "checked": false} ,
-{"name":"Adult nurse", "checked": false} ,
-{"name":"Advertising account executive", "checked": false} ,
-{"name":"Advertising account planner", "checked": false} ,
-{"name":"Advertising copywriter", "checked": false} ,
-{"name":"Advice worker", "checked": false} ,
-{"name":"Advocate (Scotland)", "checked": false} ,
-{"name":"Aeronautical engineer", "checked": false} ,
-{"name":"Agricultural consultant", "checked": false} ,
-{"name":"Agricultural manager", "checked": false} ,
-{"name":"Aid worker/humanitarian worker", "checked": false} ,
-{"name":"Air traffic controller", "checked": false} ,
-{"name":"Airline cabin crew", "checked": false} ,
-{"name":"Amenity horticulturist", "checked": false} ,
-{"name":"Analytical chemist", "checked": false} ,
-{"name":"Animal nutritionist", "checked": false} ,
-{"name":"Animator", "checked": false} ,
-{"name":"Archaeologist", "checked": false} ,
-{"name":"Architect", "checked": true} ,
-{"name":"Architectural technologist", "checked": false} ,
-{"name":"Archivist", "checked": false} ,
-{"name":"Armed forces officer", "checked": false} ,
-{"name":"Aromatherapistr", "checked": false} ,
-{"name":"Art therapist", "checked": false} ,
-{"name":"Arts administrator", "checked": false} ,
-{"name":"Auditor", "checked": false} ,
-{"name":"Automotive engineer", "checked": false} ,
-{"name":"Barrister", "checked": false} ,
-{"name":"Barrister’s clerk", "checked": false} ,
-{"name":"Bilingual secretary", "checked": false} ,
-{"name":"Biomedical engineer", "checked": false} ,
-{"name":"Biomedical scientist", "checked": false} ,
-{"name":"Biotechnologist", "checked": false} ,
-{"name":"Brand manager", "checked": false} ,
-{"name":"Broadcasting presenter", "checked": false} ,
-{"name":"Building control officer/surveyor", "checked": false} ,
-{"name":"Building services engineer", "checked": false} ,
-{"name":"Building surveyor", "checked": false} ,
-{"name":"Camera operator", "checked": false} ,
-{"name":"Careers adviser (higher education)", "checked": false} ,
-{"name":"Careers consultant", "checked": false} ,
-{"name":"Careers adviser", "checked": false} ,
-{"name":"Careers consultant", "checked": false} ,
-{"name":"Cartographer", "checked": false} ,
-{"name":"Catering manager", "checked": false} ,
-{"name":"Charities administrator", "checked": false} ,
-{"name":"Catering manager", "checked": false} ,
-{"name":"Charities administrator", "checked": false} ,
-{"name":"Charities fundraiser", "checked": false} ,
-{"name":"Chemical (process) engineer", "checked": false} ,
-{"name":"Child psychotherapist", "checked": false} ,
-{"name":"Children's nurse", "checked": false} ,
-{"name":"Chiropractor", "checked": false} ,
-{"name":"Civil engineer", "checked": false} ,
-{"name":"Civil Service administrator", "checked": false} ,
-{"name":"Clinical biochemist", "checked": false} ,
-{"name":"Clinical cytogeneticist", "checked": false} ,
-{"name":"Clinical microbiologist", "checked": false} ,
-{"name":"Clinical molecular geneticist", "checked": false} ,
-{"name":"Clinical research associate", "checked": false} ,
-{"name":"Clinical scientist - tissue typing", "checked": false} ,
-{"name":"Clothing and textile technologist", "checked": false} ,
-{"name":"Colour technologist", "checked": false} ,
-{"name":"Commercial horticulturist", "checked": false} ,
-{"name":"Commercial/residential/rural surveyor", "checked": false} ,
-{"name":"Commissioning editor", "checked": false} ,
-{"name":"Commissioning engineer", "checked": false} ,
-{"name":"Commodity broker", "checked": false} ,
-{"name":"Communications engineer", "checked": false} ,
-{"name":"Community arts worker", "checked": false} ,
-{"name":"Community education officer", "checked": false} ,
-{"name":"Community worker", "checked": false} ,
-{"name":"Company secretary", "checked": false} ,
-{"name":"Computer sales support", "checked": false} ,
-{"name":"Computer scientist", "checked": false} ,
-{"name":"Conference organiser", "checked": false} ,
-{"name":"Consultant", "checked": false} ,
-{"name":"Consumer rights adviser", "checked": false} ,
-{"name":"Control and instrumentation engineer", "checked": false} ,
-{"name":"Corporate banker", "checked": false} ,
-{"name":"Corporate treasurer", "checked": false} ,
-{"name":"Counsellor", "checked": false} ,
-{"name":"Courier/tour guide", "checked": false} ,
-{"name":"Court reporter/verbatim reporter", "checked": false} ,
-{"name":"Credit analyst", "checked": false} ,
-{"name":"Crown Prosecution Service lawyer", "checked": false} ,
-{"name":"Crystallographer", "checked": false} ,
-{"name":"Curator", "checked": false} ,
-{"name":"Customs officer", "checked": false} ,
-{"name":"Cyber security specialist", "checked": false} ,
-{"name":"Dance movement therapist", "checked": false} ,
-{"name":"Data analyst", "checked": false} ,
-{"name":"Data scientist", "checked": false} ,
-{"name":"Data visualisation analyst", "checked": false} ,
-{"name":"Database administrator", "checked": false} ,
-{"name":"Debt/finance adviser", "checked": false} ,
-{"name":"Dental hygienist", "checked": false} ,
-{"name":"Dentist", "checked": false} ,
-{"name":"Dentist", "checked": false} ,
-{"name":"Design engineer", "checked": false} ,
-{"name":"Dietitian", "checked": false} ,
-{"name":"Diplomatic service","checked": false} ,
-{"name":"Doctor (hospital)","checked": false} ,
-{"name":"Dramatherapist","checked": false} ,
-{"name":"Economist","checked": false} ,
-{"name":"Editorial assistant","checked": false} ,
-{"name":"Education administrator","checked": false} ,
-{"name":"Electrical engineer","checked": false} ,
-{"name":"Employment advice worker","checked": false} ,
-{"name":"Energy conservation officer","checked": false} ,
-{"name":"Engineering geologist","checked": false} ,
-{"name":"Environmental education officer","checked": false} ,
-{"name":"Environmental health officer","checked": false} ,
-{"name":"Environmental scientist","checked": false} ,
-{"name":"Environmental scientist","checked": false} ,
-{"name":"Equal opportunities officer","checked": false} ,
-{"name":"Equality and diversity officer", "checked": false} ,
-{"name":"Ergonomist", "checked": false} ,
-{"name":"Estate agent", "checked": false} ,
-{"name":"European Commission administrators", "checked": false} ,
-{"name":"Exhibition display designer", "checked": false} ,
-{"name":"Exhibition organiser", "checked": false} ,
-{"name":"Exploration geologist", "checked": false} ,
-{"name":"Facilities manager", "checked": false} ,
-{"name":"Field trials officer", "checked": false} ,
-{"name":"Financial manager", "checked": false} ,
-{"name":"Firefighter", "checked": false} ,
-{"name":"Fisheries officer", "checked": false} ,
-{"name":"Fitness centre manager", "checked": false} ,
-{"name":"Food scientist", "checked": false} ,
-{"name":"Food technologist", "checked": false} ,
-{"name":"Forensic scientist", "checked": false} ,
-{"name":"Geneticist", "checked": false} ,
-{"name":"Geographical information systems manager", "checked": false} ,
-{"name":"Geomatics/land surveyor", "checked": false} ,
-{"name":"Government lawyer", "checked": false} ,
-{"name":"Government research officer", "checked": false} ,
-{"name":"Graphic designer", "checked": false} ,
-{"name":"Health and safety adviser", "checked": false} ,
-{"name":"Health and safety inspector", "checked": false} ,
-{"name":"Health promotion specialist", "checked": false} ,
-{"name":"Health service manager", "checked": false} ,
-{"name":"Health visitor", "checked": false} ,
-{"name":"Herbalist", "checked": false} ,
-{"name":"Heritage manager", "checked": false} ,
-{"name":"Higher education administrator", "checked": false} ,
-{"name":"Higher education advice worker", "checked": false} ,
-{"name":"Homeless worker", "checked": false} ,
-{"name":"Horticultural consultant", "checked": false} ,
-{"name":"Hotel manager", "checked": false} ,
-{"name":"Housing adviser", "checked": false} ,
-{"name":"Human resources officer", "checked": false} ,
-{"name":"Hydrologist", "checked": false} ,
-{"name":"Illustrator", "checked": false} ,
-{"name":"Immigration officer", "checked": false} ,
-{"name":"Immunologist", "checked": false} ,
-{"name":"Industrial/product designer", "checked": false} ,
-{"name":"Information scientist", "checked": false} ,
-{"name":"Information systems manager", "checked": false} ,
-{"name":"Information technology/software trainers", "checked": false} ,
-{"name":"Insurance broker", "checked": false} ,
-{"name":"Insurance claims inspector", "checked": false} ,
-{"name":"Insurance risk surveyor", "checked": false} ,
-{"name":"Insurance underwriter", "checked": false} ,
-{"name":"Interpreter", "checked": false} ,
-{"name":"Investment analyst", "checked": false} ,
-{"name":"Investment banker - corporate finance", "checked": false} ,
-{"name":"Investment banker – operations", "checked": false} ,
-{"name":"Investment fund manager", "checked": false} ,
-{"name":"IT consultant", "checked": false} ,
-{"name":"IT support analyst", "checked": false} ,
-{"name":"Journalist", "checked": false} ,
-{"name":"Laboratory technician", "checked": false} ,
-{"name":"Land-based engineer", "checked": false} ,
-{"name":"Landscape architect", "checked": false} ,
-{"name":"Learning disability nurse", "checked": false} ,
-{"name":"Learning mentor", "checked": false} ,
-{"name":"Lecturer (adult education)", "checked": false} ,
-{"name":"Lecturer (further education)", "checked": false} ,
-{"name":"Lecturer (higher education)", "checked": false} ,
-{"name":"Legal executive", "checked": false} ,
-{"name":"Leisure centre manager", "checked": false} ,
-{"name":"Licensed conveyancer", "checked": false} ,
-{"name":"Local government administrator", "checked": false} ,
-{"name":"Local government lawyer", "checked": false} ,
-{"name":"Logistics/distribution manager", "checked": false} ,
-{"name":"Magazine features editor", "checked": false} ,
-{"name":"Magazine journalist", "checked": false} ,
-{"name":"Maintenance engineer", "checked": false} ,
-{"name":"Management accountant", "checked": false} ,
-{"name":"Manufacturing engineer", "checked": false} ,
-{"name":"Manufacturing machine operator", "checked": false} ,
-{"name":"Manufacturing toolmaker", "checked": false} ,
-{"name":"Marine scientist", "checked": false} ,
-{"name":"Market research executive", "checked": false} ,
-{"name":"Marketing account manager", "checked": false} ,
-{"name":"Marketing assistant", "checked": false} ,
-{"name":"Marketing executive", "checked": false} ,
-{"name":"Marketing manager (social media)", "checked": false} ,
-{"name":"Materials engineer", "checked": false} ,
-{"name":"Materials specialist", "checked": false} ,
-{"name":"Mechanical engineer", "checked": false} ,
-{"name":"Media analyst", "checked": false} ,
-{"name":"Medical physicist", "checked": false} ,
-{"name":"Medical representative", "checked": false} ,
-{"name":"Metallurgist", "checked": false} ,
-{"name":"Meteorologist", "checked": false} ,
-{"name":"Microbiologist", "checked": false} ,
-{"name":"Midwife", "checked": false} ,
-{"name":"Mining engineer", "checked": false} ,
-{"name":"Mobile developer", "checked": false} ,
-{"name":"Multimedia programmer", "checked": false} ,
-{"name":"Multimedia specialists", "checked": false} ,
-{"name":"Museum education officer", "checked": false} ,
-{"name":"Museum/gallery exhibition officer", "checked": false} ,
-{"name":"Music therapist", "checked": false} ,
-{"name":"Nanoscientist", "checked": false} ,
-{"name":"Nature conservation officer", "checked": false} ,
-{"name":"Naval architect", "checked": false} ,
-{"name":"Network administrator", "checked": false} ,
-{"name":"Nutritional therapist", "checked": false} ,
-{"name":"Nutritionist", "checked": false} ,
-{"name":"Occupational therapist", "checked": false} ,
-{"name":"Oceanographer", "checked": false} ,
-{"name":"Office manager", "checked": false} ,
-{"name":"Operational researcher", "checked": false} ,
-{"name":"Orthoptist", "checked": false} ,
-{"name":"Outdoor pursuits manager", "checked": false} ,
-{"name":"Packaging technologist", "checked": false} ,
-{"name":"Paramedic", "checked": false} ,
-{"name":"Patent attorney", "checked": false} ,
-{"name":"Patent examiner", "checked": false} ,
-{"name":"Pension scheme manager", "checked": false} ,
-{"name":"Personal assistant", "checked": false} ,
-{"name":"Petroleum engineer", "checked": false} ,
-{"name":"Pharmacist", "checked": false} ,
-{"name":"Pharmacologist", "checked": false} ,
-{"name":"Pharmacovigilance officer", "checked": false} ,
-{"name":"Photographer", "checked": false} ,
-{"name":"Physiotherapist", "checked": false} ,
-{"name":"Picture researcher", "checked": false} ,
-{"name":"Planning and development surveyor", "checked": false} ,
-{"name":"Planning technician", "checked": false} ,
-{"name":"Plant breeder", "checked": false} ,
-{"name":"Police officer", "checked": false} ,
-{"name":"Political party agent", "checked": false} ,
-{"name":"Political party research officer", "checked": false} ,
-{"name":"Practice nurse", "checked": false} ,
-{"name":"Press photographer", "checked": false} ,
-{"name":"Press sub-editor", "checked": false} ,
-{"name":"Prison officer", "checked": false} ,
-{"name":"Private music teacher", "checked": false} ,
-{"name":"Probation officer", "checked": false} ,
-{"name":"Product development scientist", "checked": false} ,
-{"name":"Production manager", "checked": false} ,
-{"name":"Programme researcher", "checked": false} ,
-{"name":"Project manager", "checked": false} ,
-{"name":"Psychologist (clinical)", "checked": false} ,
-{"name":"Psychologist (educational)", "checked": false} ,
-{"name":"Psychotherapist", "checked": false} ,
-{"name":"Public affairs consultant (lobbyist)", "checked": false} ,
-{"name":"Public affairs consultant (research)", "checked": false} ,
-{"name":"Public house manager", "checked": false} ,
-{"name":"Public librarian", "checked": false} ,
-{"name":"Public relations (PR) officer", "checked": false} ,
-{"name":"QA analyst", "checked": false} ,
-{"name":"Quality assurance manager", "checked": false} ,
-{"name":"Quantity surveyor", "checked": false} ,
-{"name":"Records manager", "checked": false} ,
-{"name":"Recruitment consultant", "checked": false} ,
-{"name":"Recycling officer", "checked": false} ,
-{"name":"Regulatory affairs officer", "checked": false} ,
-{"name":"Research chemist", "checked": false} ,
-{"name":"Research scientist", "checked": false} ,
-{"name":"Restaurant manager", "checked": false} ,
-{"name":"Retail banker", "checked": false} ,
-{"name":"Retail buyer", "checked": false} ,
-{"name":"Retail manager", "checked": false} ,
-{"name":"Retail merchandiser", "checked": false} ,
-{"name":"Retail pharmacist", "checked": false} ,
-{"name":"Sales executive", "checked": false} ,
-{"name":"Sales manager", "checked": false} ,
-{"name":"Scene of crime officer", "checked": false} ,
-{"name":"Secretary", "checked": false} ,
-{"name":"Seismic interpreter", "checked": false} ,
-{"name":"Site engineer", "checked": false} ,
-{"name":"Site manager", "checked": false} ,
-{"name":"Social researcher", "checked": false} ,
-{"name":"Social worker", "checked": false} ,
-{"name":"Software developer", "checked": false} ,
-{"name":"Soil scientist", "checked": false} ,
-{"name":"Solicitor", "checked": false} ,
-{"name":"Speech and language therapist", "checked": false} ,
-{"name":"Sports coach", "checked": false} ,
-{"name":"Sports development officer", "checked": false} ,
-{"name":"Sports therapist", "checked": false} ,
-{"name":"Statistician", "checked": false} ,
-{"name":"Stockbroker", "checked": false} ,
-{"name":"Structural engineer", "checked": false} ,
-{"name":"Systems analyst", "checked": false} ,
-{"name":"Systems developer", "checked": false} ,
-{"name":"Tax inspector", "checked": false} ,
-{"name":"Teacher (nursery/early years)", "checked": false} ,
-{"name":"Teacher (primary)", "checked": false} ,
-{"name":"Teacher (secondary)", "checked": false} ,
-{"name":"Teacher (special educational needs)", "checked": false} ,
-{"name":"Teaching/classroom assistant", "checked": false},
-{"name":"Technical author", "checked": false},
-{"name":"Technical sales engineer", "checked": false},
-{"name":"TEFL/TESL teacher", "checked": false},
-{"name":"Television production assistant", "checked": false},
-{"name":"Test automation developer", "checked": false},
-{"name":"Tour operator", "checked": false},
-{"name":"Tourism officer", "checked": false},
-{"name":"Tourist information manager", "checked": false},
-{"name":"Town and country planner", "checked": false},
-{"name":"Toxicologist", "checked": false},
-{"name":"Trade union research officer", "checked": false},
-{"name":"Trader", "checked": false},
-{"name":"Trading standards officer", "checked": false},
-{"name":"Training and development officer", "checked": false},
-{"name":"Translator", "checked": false},
-{"name":"Transportation planner", "checked": false},
-{"name":"Transportation planner", "checked": false},
-{"name":"Travel agent", "checked": false},
-{"name":"TV/film/theatre set designer", "checked": false},
-{"name":"UX designer", "checked": false},
-{"name":"Validation engineer", "checked": false},
-{"name":"Veterinary surgeon", "checked": false},
-{"name":"Video game designer", "checked": false},
-{"name":"Video game developer", "checked": false},
-{"name":"Volunteer work organiser", "checked": false},
-{"name":"Warehouse manager", "checked": false},
-{"name":"Waste disposal officer", "checked": false},
-{"name":"Water conservation officer", "checked": false},
-{"name":"Water engineer", "checked": false},
-{"name":"Web designer", "checked": false},
-{"name":"Web developer", "checked": false},
-{"name":"Welfare rights adviser", "checked": false},
-{"name":"Writer", "checked": false},
-{"name":"Youth worker", "checked": false},
-
+const countryList = [
+  {"name": "Academic librarian", "checked": false},
+  {"name": "Accountant", "checked": false},
+  {"name": "Accounting technician", "checked": false},
+  {"name": "Actuary", "checked": false},
+  {"name": "Adult nurse", "checked": false},
+  {"name": "Advertising account executive", "checked": false},
+  {"name": "Advertising account planner", "checked": false},
+  {"name": "Advertising copywriter", "checked": false},
+  {"name": "Advice worker", "checked": false},
+  {"name": "Advocate (Scotland)", "checked": false},
+  {"name": "Aeronautical engineer", "checked": false},
+  {"name": "Agricultural consultant", "checked": false},
+  {"name": "Agricultural manager", "checked": false},
+  {"name": "Aid worker/humanitarian worker", "checked": false},
+  {"name": "Air traffic controller", "checked": false},
+  {"name": "Airline cabin crew", "checked": false},
+  {"name": "Amenity horticulturist", "checked": false},
+  {"name": "Analytical chemist", "checked": false},
+  {"name": "Animal nutritionist", "checked": false},
+  {"name": "Animator", "checked": false},
+  {"name": "Archaeologist", "checked": false},
+  {"name": "Architect", "checked": true},
+  {"name": "Architectural technologist", "checked": false},
+  {"name": "Archivist", "checked": false},
+  {"name": "Armed forces officer", "checked": false},
+  {"name": "Aromatherapistr", "checked": false},
+  {"name": "Art therapist", "checked": false},
+  {"name": "Arts administrator", "checked": false},
+  {"name": "Auditor", "checked": false},
+  {"name": "Automotive engineer", "checked": false},
+  {"name": "Barrister", "checked": false},
+  {"name": "Barrister’s clerk", "checked": false},
+  {"name": "Bilingual secretary", "checked": false},
+  {"name": "Biomedical engineer", "checked": false},
+  {"name": "Biomedical scientist", "checked": false},
+  {"name": "Biotechnologist", "checked": false},
+  {"name": "Brand manager", "checked": false},
+  {"name": "Broadcasting presenter", "checked": false},
+  {"name": "Building control officer/surveyor", "checked": false},
+  {"name": "Building services engineer", "checked": false},
+  {"name": "Building surveyor", "checked": false},
+  {"name": "Camera operator", "checked": false},
+  {"name": "Careers adviser (higher education)", "checked": false},
+  {"name": "Careers consultant", "checked": false},
+  {"name": "Careers adviser", "checked": false},
+  {"name": "Careers consultant", "checked": false},
+  {"name": "Cartographer", "checked": false},
+  {"name": "Catering manager", "checked": false},
+  {"name": "Charities administrator", "checked": false},
+  {"name": "Catering manager", "checked": false},
+  {"name": "Charities administrator", "checked": false},
+  {"name": "Charities fundraiser", "checked": false},
+  {"name": "Chemical (process) engineer", "checked": false},
+  {"name": "Child psychotherapist", "checked": false},
+  {"name": "Children's nurse", "checked": false},
+  {"name": "Chiropractor", "checked": false},
+  {"name": "Civil engineer", "checked": false},
+  {"name": "Civil Service administrator", "checked": false},
+  {"name": "Clinical biochemist", "checked": false},
+  {"name": "Clinical cytogeneticist", "checked": false},
+  {"name": "Clinical microbiologist", "checked": false},
+  {"name": "Clinical molecular geneticist", "checked": false},
+  {"name": "Clinical research associate", "checked": false},
+  {"name": "Clinical scientist - tissue typing", "checked": false},
+  {"name": "Clothing and textile technologist", "checked": false},
+  {"name": "Colour technologist", "checked": false},
+  {"name": "Commercial horticulturist", "checked": false},
+  {"name": "Commercial/residential/rural surveyor", "checked": false},
+  {"name": "Commissioning editor", "checked": false},
+  {"name": "Commissioning engineer", "checked": false},
+  {"name": "Commodity broker", "checked": false},
+  {"name": "Communications engineer", "checked": false},
+  {"name": "Community arts worker", "checked": false},
+  {"name": "Community education officer", "checked": false},
+  {"name": "Community worker", "checked": false},
+  {"name": "Company secretary", "checked": false},
+  {"name": "Computer sales support", "checked": false},
+  {"name": "Computer scientist", "checked": false},
+  {"name": "Conference organiser", "checked": false},
+  {"name": "Consultant", "checked": false},
+  {"name": "Consumer rights adviser", "checked": false},
+  {"name": "Control and instrumentation engineer", "checked": false},
+  {"name": "Corporate banker", "checked": false},
+  {"name": "Corporate treasurer", "checked": false},
+  {"name": "Counsellor", "checked": false},
+  {"name": "Courier/tour guide", "checked": false},
+  {"name": "Court reporter/verbatim reporter", "checked": false},
+  {"name": "Credit analyst", "checked": false},
+  {"name": "Crown Prosecution Service lawyer", "checked": false},
+  {"name": "Crystallographer", "checked": false},
+  {"name": "Curator", "checked": false},
+  {"name": "Customs officer", "checked": false},
+  {"name": "Cyber security specialist", "checked": false},
+  {"name": "Dance movement therapist", "checked": false},
+  {"name": "Data analyst", "checked": false},
+  {"name": "Data scientist", "checked": false},
+  {"name": "Data visualisation analyst", "checked": false},
+  {"name": "Database administrator", "checked": false},
+  {"name": "Debt/finance adviser", "checked": false},
+  {"name": "Dental hygienist", "checked": false},
+  {"name": "Dentist", "checked": false},
+  {"name": "Dentist", "checked": false},
+  {"name": "Design engineer", "checked": false},
+  {"name": "Dietitian", "checked": false},
+  {"name": "Diplomatic service", "checked": false},
+  {"name": "Doctor (hospital)", "checked": false},
+  {"name": "Dramatherapist", "checked": false},
+  {"name": "Economist", "checked": false},
+  {"name": "Editorial assistant", "checked": false},
+  {"name": "Education administrator", "checked": false},
+  {"name": "Electrical engineer", "checked": false},
+  {"name": "Employment advice worker", "checked": false},
+  {"name": "Energy conservation officer", "checked": false},
+  {"name": "Engineering geologist", "checked": false},
+  {"name": "Environmental education officer", "checked": false},
+  {"name": "Environmental health officer", "checked": false},
+  {"name": "Environmental scientist", "checked": false},
+  {"name": "Environmental scientist", "checked": false},
+  {"name": "Equal opportunities officer", "checked": false},
+  {"name": "Equality and diversity officer", "checked": false},
+  {"name": "Ergonomist", "checked": false},
+  {"name": "Estate agent", "checked": false},
+  {"name": "European Commission administrators", "checked": false},
+  {"name": "Exhibition display designer", "checked": false},
+  {"name": "Exhibition organiser", "checked": false},
+  {"name": "Exploration geologist", "checked": false},
+  {"name": "Facilities manager", "checked": false},
+  {"name": "Field trials officer", "checked": false},
+  {"name": "Financial manager", "checked": false},
+  {"name": "Firefighter", "checked": false},
+  {"name": "Fisheries officer", "checked": false},
+  {"name": "Fitness centre manager", "checked": false},
+  {"name": "Food scientist", "checked": false},
+  {"name": "Food technologist", "checked": false},
+  {"name": "Forensic scientist", "checked": false},
+  {"name": "Geneticist", "checked": false},
+  {"name": "Geographical information systems manager", "checked": false},
+  {"name": "Geomatics/land surveyor", "checked": false},
+  {"name": "Government lawyer", "checked": false},
+  {"name": "Government research officer", "checked": false},
+  {"name": "Graphic designer", "checked": false},
+  {"name": "Health and safety adviser", "checked": false},
+  {"name": "Health and safety inspector", "checked": false},
+  {"name": "Health promotion specialist", "checked": false},
+  {"name": "Health service manager", "checked": false},
+  {"name": "Health visitor", "checked": false},
+  {"name": "Herbalist", "checked": false},
+  {"name": "Heritage manager", "checked": false},
+  {"name": "Higher education administrator", "checked": false},
+  {"name": "Higher education advice worker", "checked": false},
+  {"name": "Homeless worker", "checked": false},
+  {"name": "Horticultural consultant", "checked": false},
+  {"name": "Hotel manager", "checked": false},
+  {"name": "Housing adviser", "checked": false},
+  {"name": "Human resources officer", "checked": false},
+  {"name": "Hydrologist", "checked": false},
+  {"name": "Illustrator", "checked": false},
+  {"name": "Immigration officer", "checked": false},
+  {"name": "Immunologist", "checked": false},
+  {"name": "Industrial/product designer", "checked": false},
+  {"name": "Information scientist", "checked": false},
+  {"name": "Information systems manager", "checked": false},
+  {"name": "Information technology/software trainers", "checked": false},
+  {"name": "Insurance broker", "checked": false},
+  {"name": "Insurance claims inspector", "checked": false},
+  {"name": "Insurance risk surveyor", "checked": false},
+  {"name": "Insurance underwriter", "checked": false},
+  {"name": "Interpreter", "checked": false},
+  {"name": "Investment analyst", "checked": false},
+  {"name": "Investment banker - corporate finance", "checked": false},
+  {"name": "Investment banker – operations", "checked": false},
+  {"name": "Investment fund manager", "checked": false},
+  {"name": "IT consultant", "checked": false},
+  {"name": "IT support analyst", "checked": false},
+  {"name": "Journalist", "checked": false},
+  {"name": "Laboratory technician", "checked": false},
+  {"name": "Land-based engineer", "checked": false},
+  {"name": "Landscape architect", "checked": false},
+  {"name": "Learning disability nurse", "checked": false},
+  {"name": "Learning mentor", "checked": false},
+  {"name": "Lecturer (adult education)", "checked": false},
+  {"name": "Lecturer (further education)", "checked": false},
+  {"name": "Lecturer (higher education)", "checked": false},
+  {"name": "Legal executive", "checked": false},
+  {"name": "Leisure centre manager", "checked": false},
+  {"name": "Licensed conveyancer", "checked": false},
+  {"name": "Local government administrator", "checked": false},
+  {"name": "Local government lawyer", "checked": false},
+  {"name": "Logistics/distribution manager", "checked": false},
+  {"name": "Magazine features editor", "checked": false},
+  {"name": "Magazine journalist", "checked": false},
+  {"name": "Maintenance engineer", "checked": false},
+  {"name": "Management accountant", "checked": false},
+  {"name": "Manufacturing engineer", "checked": false},
+  {"name": "Manufacturing machine operator", "checked": false},
+  {"name": "Manufacturing toolmaker", "checked": false},
+  {"name": "Marine scientist", "checked": false},
+  {"name": "Market research executive", "checked": false},
+  {"name": "Marketing account manager", "checked": false},
+  {"name": "Marketing assistant", "checked": false},
+  {"name": "Marketing executive", "checked": false},
+  {"name": "Marketing manager (social media)", "checked": false},
+  {"name": "Materials engineer", "checked": false},
+  {"name": "Materials specialist", "checked": false},
+  {"name": "Mechanical engineer", "checked": false},
+  {"name": "Media analyst", "checked": false},
+  {"name": "Medical physicist", "checked": false},
+  {"name": "Medical representative", "checked": false},
+  {"name": "Metallurgist", "checked": false},
+  {"name": "Meteorologist", "checked": false},
+  {"name": "Microbiologist", "checked": false},
+  {"name": "Midwife", "checked": false},
+  {"name": "Mining engineer", "checked": false},
+  {"name": "Mobile developer", "checked": false},
+  {"name": "Multimedia programmer", "checked": false},
+  {"name": "Multimedia specialists", "checked": false},
+  {"name": "Museum education officer", "checked": false},
+  {"name": "Museum/gallery exhibition officer", "checked": false},
+  {"name": "Music therapist", "checked": false},
+  {"name": "Nanoscientist", "checked": false},
+  {"name": "Nature conservation officer", "checked": false},
+  {"name": "Naval architect", "checked": false},
+  {"name": "Network administrator", "checked": false},
+  {"name": "Nutritional therapist", "checked": false},
+  {"name": "Nutritionist", "checked": false},
+  {"name": "Occupational therapist", "checked": false},
+  {"name": "Oceanographer", "checked": false},
+  {"name": "Office manager", "checked": false},
+  {"name": "Operational researcher", "checked": false},
+  {"name": "Orthoptist", "checked": false},
+  {"name": "Outdoor pursuits manager", "checked": false},
+  {"name": "Packaging technologist", "checked": false},
+  {"name": "Paramedic", "checked": false},
+  {"name": "Patent attorney", "checked": false},
+  {"name": "Patent examiner", "checked": false},
+  {"name": "Pension scheme manager", "checked": false},
+  {"name": "Personal assistant", "checked": false},
+  {"name": "Petroleum engineer", "checked": false},
+  {"name": "Pharmacist", "checked": false},
+  {"name": "Pharmacologist", "checked": false},
+  {"name": "Pharmacovigilance officer", "checked": false},
+  {"name": "Photographer", "checked": false},
+  {"name": "Physiotherapist", "checked": false},
+  {"name": "Picture researcher", "checked": false},
+  {"name": "Planning and development surveyor", "checked": false},
+  {"name": "Planning technician", "checked": false},
+  {"name": "Plant breeder", "checked": false},
+  {"name": "Police officer", "checked": false},
+  {"name": "Political party agent", "checked": false},
+  {"name": "Political party research officer", "checked": false},
+  {"name": "Practice nurse", "checked": false},
+  {"name": "Press photographer", "checked": false},
+  {"name": "Press sub-editor", "checked": false},
+  {"name": "Prison officer", "checked": false},
+  {"name": "Private music teacher", "checked": false},
+  {"name": "Probation officer", "checked": false},
+  {"name": "Product development scientist", "checked": false},
+  {"name": "Production manager", "checked": false},
+  {"name": "Programme researcher", "checked": false},
+  {"name": "Project manager", "checked": false},
+  {"name": "Psychologist (clinical)", "checked": false},
+  {"name": "Psychologist (educational)", "checked": false},
+  {"name": "Psychotherapist", "checked": false},
+  {"name": "Public affairs consultant (lobbyist)", "checked": false},
+  {"name": "Public affairs consultant (research)", "checked": false},
+  {"name": "Public house manager", "checked": false},
+  {"name": "Public librarian", "checked": false},
+  {"name": "Public relations (PR) officer", "checked": false},
+  {"name": "QA analyst", "checked": false},
+  {"name": "Quality assurance manager", "checked": false},
+  {"name": "Quantity surveyor", "checked": false},
+  {"name": "Records manager", "checked": false},
+  {"name": "Recruitment consultant", "checked": false},
+  {"name": "Recycling officer", "checked": false},
+  {"name": "Regulatory affairs officer", "checked": false},
+  {"name": "Research chemist", "checked": false},
+  {"name": "Research scientist", "checked": false},
+  {"name": "Restaurant manager", "checked": false},
+  {"name": "Retail banker", "checked": false},
+  {"name": "Retail buyer", "checked": false},
+  {"name": "Retail manager", "checked": false},
+  {"name": "Retail merchandiser", "checked": false},
+  {"name": "Retail pharmacist", "checked": false},
+  {"name": "Sales executive", "checked": false},
+  {"name": "Sales manager", "checked": false},
+  {"name": "Scene of crime officer", "checked": false},
+  {"name": "Secretary", "checked": false},
+  {"name": "Seismic interpreter", "checked": false},
+  {"name": "Site engineer", "checked": false},
+  {"name": "Site manager", "checked": false},
+  {"name": "Social researcher", "checked": false},
+  {"name": "Social worker", "checked": false},
+  {"name": "Software developer", "checked": false},
+  {"name": "Soil scientist", "checked": false},
+  {"name": "Solicitor", "checked": false},
+  {"name": "Speech and language therapist", "checked": false},
+  {"name": "Sports coach", "checked": false},
+  {"name": "Sports development officer", "checked": false},
+  {"name": "Sports therapist", "checked": false},
+  {"name": "Statistician", "checked": false},
+  {"name": "Stockbroker", "checked": false},
+  {"name": "Structural engineer", "checked": false},
+  {"name": "Systems analyst", "checked": false},
+  {"name": "Systems developer", "checked": false},
+  {"name": "Tax inspector", "checked": false},
+  {"name": "Teacher (nursery/early years)", "checked": false},
+  {"name": "Teacher (primary)", "checked": false},
+  {"name": "Teacher (secondary)", "checked": false},
+  {"name": "Teacher (special educational needs)", "checked": false},
+  {"name": "Teaching/classroom assistant", "checked": false},
+  {"name": "Technical author", "checked": false},
+  {"name": "Technical sales engineer", "checked": false},
+  {"name": "TEFL/TESL teacher", "checked": false},
+  {"name": "Television production assistant", "checked": false},
+  {"name": "Test automation developer", "checked": false},
+  {"name": "Tour operator", "checked": false},
+  {"name": "Tourism officer", "checked": false},
+  {"name": "Tourist information manager", "checked": false},
+  {"name": "Town and country planner", "checked": false},
+  {"name": "Toxicologist", "checked": false},
+  {"name": "Trade union research officer", "checked": false},
+  {"name": "Trader", "checked": false},
+  {"name": "Trading standards officer", "checked": false},
+  {"name": "Training and development officer", "checked": false},
+  {"name": "Translator", "checked": false},
+  {"name": "Transportation planner", "checked": false},
+  {"name": "Transportation planner", "checked": false},
+  {"name": "Travel agent", "checked": false},
+  {"name": "TV/film/theatre set designer", "checked": false},
+  {"name": "UX designer", "checked": false},
+  {"name": "Validation engineer", "checked": false},
+  {"name": "Veterinary surgeon", "checked": false},
+  {"name": "Video game designer", "checked": false},
+  {"name": "Video game developer", "checked": false},
+  {"name": "Volunteer work organiser", "checked": false},
+  {"name": "Warehouse manager", "checked": false},
+  {"name": "Waste disposal officer", "checked": false},
+  {"name": "Water conservation officer", "checked": false},
+  {"name": "Water engineer", "checked": false},
+  {"name": "Web designer", "checked": false},
+  {"name": "Web developer", "checked": false},
+  {"name": "Welfare rights adviser", "checked": false},
+  {"name": "Writer", "checked": false},
+  {"name": "Youth worker", "checked": false},
 ];
