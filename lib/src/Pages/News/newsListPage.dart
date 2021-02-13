@@ -14,6 +14,7 @@ import 'package:flutter_login_signup/src/Widgets/listViewTileWidget.dart';
 import 'package:flutter_login_signup/src/Utils/Helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:load/load.dart';
+import 'package:flutter_login_signup/src/Utils/HttpHelper.dart';
 
 
 
@@ -32,6 +33,7 @@ class _NewsListPageState extends State<NewsListPage> {
   String photo_url;
   String name;
   String email;
+  List<NetworkImage> networkImagesList = List<NetworkImage>();
 
   Map data;
   List allNewsData;
@@ -101,7 +103,9 @@ class _NewsListPageState extends State<NewsListPage> {
             prefs.setString('country', resp['user']['country'].toString());
             prefs.setString('city', resp['user']['city'].toString());
             prefs.setString('state', resp['user']['state'].toString());
-            prefs.setString('zip_code', resp['user']['zip_code'].toString());
+            prefs.setString('zip_code', res
+
+            p['user']['zip_code'].toString());
             prefs.setString('photo_url', resp['user']['photo_url'].toString());
 
             prefs.setBool('isUserLoggedIn', isRememberMeTextBoxChecked);
@@ -283,33 +287,36 @@ class _NewsListPageState extends State<NewsListPage> {
   }
 
   Widget getCarouselWidget(double height) {
-    return Container(
-      height: height * 0.30,
-      child: Center(
-        child: SizedBox.expand(
-          child: Carousel(
-            dotSize: 4.0,
-            dotSpacing: 15.0,
-            dotColor: Color(0xFF573555),
-            indicatorBgPadding: 5.0,
-            //  dotBgColor: Colors.purple.withOpacity(0.5),
-            //borderRadius: true,
-            images: [
-              //  ExactAssetImage("assets/banner1.png"),
-              //   ExactAssetImage("assets/banner2.png"),
-              //  ExactAssetImage("assets/banner1.png"),
-              NetworkImage(
-                  'https://c.files.bbci.co.uk/8238/production/_113963333_062930447.jpg'),
+     return  Expanded(
+      flex:2,
+      child: SizedBox.expand(
+        child: FutureBuilder(
+          future: HttpHelper.makeNewsGalleryImagesRequest(),
+          builder: (BuildContext context, AsyncSnapshot snapshot){
 
-              NetworkImage(
-                  'https://i.ytimg.com/vi/HlEFrbLeDks/maxresdefault.jpg'),
-              NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQiZ5txPdZBmES7mBciInO5S6BV7HDHdm7exg&usqp=CAU'),
-              NetworkImage(
-                  'https://c.files.bbci.co.uk/5A67/production/_109934132_final-final-feat.jpg'),
-              //   NetworkImage('https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
-            ],
-          ),
+            networkImagesList.clear();
+
+            for(var loop = 0;loop < snapshot.data['news'].length; loop++){
+              networkImagesList.add(NetworkImage(snapshot.data['news'][loop]));
+            }
+
+
+            if(snapshot.connectionState != ConnectionState.done){
+              return Container(); // your widget while loading
+            }
+
+            if(!snapshot.hasData){
+              return Container(); //your widget when error happens
+            }
+
+            return Carousel(
+              dotSize: 4.0,
+              dotSpacing: 15.0,
+              dotColor: Color(0xFF573555),
+              indicatorBgPadding: 5.0,
+              images:  networkImagesList,
+            );
+          },
         ),
       ),
     );

@@ -13,12 +13,15 @@ import 'package:flutter_login_signup/src/Pages/SuccessStories/successStoryPage.d
 import 'package:flutter_login_signup/src/Models/SuccessStory.dart';
 
 import 'package:load/load.dart';
+import 'package:flutter_login_signup/src/Utils/HttpHelper.dart';
+
 import 'package:jiffy/jiffy.dart';
 
 
 class SuccessStoriesListPage extends StatefulWidget {
   SuccessStoriesListPage({Key key, this.title}) : super(key: key);
   final String title;
+  List<NetworkImage> networkImagesList = List<NetworkImage>();
 
   @override
   _SuccessStoriesListPageState createState() => _SuccessStoriesListPageState();
@@ -28,6 +31,8 @@ class _SuccessStoriesListPageState extends State<SuccessStoriesListPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   Map<String, dynamic> data;
   List dataArray;
+  List<NetworkImage> networkImagesList = List<NetworkImage>();
+
 
   @override
   void initState() {
@@ -61,26 +66,33 @@ class _SuccessStoriesListPageState extends State<SuccessStoriesListPage> {
       height: height * (1 / 3),
       child: Center(
         child: SizedBox.expand(
-          child: Carousel(
-            dotSize: 4.0,
-            dotSpacing: 15.0,
-            dotColor: Color(0xFF573555),
-            indicatorBgPadding: 5.0,
-            //  dotBgColor: Colors.purple.withOpacity(0.5),
-            //borderRadius: true,
-            images: [
-              //  ExactAssetImage("assets/banner1.png"),
-              //   ExactAssetImage("assets/banner2.png"),
-              //  ExactAssetImage("assets/banner1.png"),
-              NetworkImage(
-                  'https://c.files.bbci.co.uk/8238/production/_113963333_062930447.jpg'),
-              NetworkImage(
-                  'https://i.ytimg.com/vi/HlEFrbLeDks/maxresdefault.jpg'),
-              NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQiZ5txPdZBmES7mBciInO5S6BV7HDHdm7exg&usqp=CAU'),
-              NetworkImage(
-                  'https://c.files.bbci.co.uk/5A67/production/_109934132_final-final-feat.jpg'),
-            ],
+          child: FutureBuilder(
+            future: HttpHelper.makeSuccessStoriesGalleryImagesRequest(),
+            builder: (BuildContext context, AsyncSnapshot snapshot){
+
+              networkImagesList.clear();
+
+              for(var loop = 0;loop < snapshot.data['success_stories'].length; loop++){
+                networkImagesList.add(NetworkImage(snapshot.data['success_stories'][loop]));
+              }
+
+
+              if(snapshot.connectionState != ConnectionState.done){
+                return Container(); // your widget while loading
+              }
+
+              if(!snapshot.hasData){
+                return Container(); //your widget when error happens
+              }
+
+              return Carousel(
+                dotSize: 4.0,
+                dotSpacing: 15.0,
+                dotColor: Color(0xFF573555),
+                indicatorBgPadding: 5.0,
+                images:  networkImagesList,
+              );
+            },
           ),
         ),
       ),

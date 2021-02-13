@@ -32,7 +32,7 @@ class BloodRequestPage extends StatefulWidget {
 
 class _BloodRequestPageState extends State<BloodRequestPage> {
 
-    final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   String _bloodTypeDropDownValue = 'Blood Type *';
   var _bloodTypeDropDownListItem = [
     "A+",
@@ -77,49 +77,49 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
           ),
           child: DropdownButtonHideUnderline(
               child: DropdownButton(
-            onTap: () {
-              setState(() {
-                //  bloodTypeColor = _bloodTypeColors[0];
-              });
-            },
-            hint: _bloodTypeDropDownValue == null
-                ? Text('Dropdown')
-                : Text(
-                    _bloodTypeDropDownValue,
-                    style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold),
-                  ),
-            isExpanded: true,
-            iconSize: 30.0,
-            style: TextStyle(
-                color: Color(0xFF573555),
-                fontSize: 13,
-                fontWeight: FontWeight.bold),
-            items: _bloodTypeDropDownListItem.map(
-              (val) {
-                return DropdownMenuItem<String>(
-                  value: val,
-                  child: Text(val),
-                );
-              },
-            ).toList(),
-            onChanged: (val) {
-              setState(
-                () {
-                  _bloodTypeDropDownValue = val;
+                onTap: () {
+                  setState(() {
+                    //  bloodTypeColor = _bloodTypeColors[0];
+                  });
                 },
-              );
-            },
-          )),
+                hint: _bloodTypeDropDownValue == null
+                    ? Text('Dropdown')
+                    : Text(
+                  _bloodTypeDropDownValue,
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold),
+                ),
+                isExpanded: true,
+                iconSize: 30.0,
+                style: TextStyle(
+                    color: Color(0xFF573555),
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
+                items: _bloodTypeDropDownListItem.map(
+                      (val) {
+                    return DropdownMenuItem<String>(
+                      value: val,
+                      child: Text(val),
+                    );
+                  },
+                ).toList(),
+                onChanged: (val) {
+                  setState(
+                        () {
+                      _bloodTypeDropDownValue = val;
+                    },
+                  );
+                },
+              )),
         ),
         Container(
-             //color: Colors.red,
+          //color: Colors.red,
           width: width * 0.12,
 
           child: IconButton(
             icon: new Image.asset(
-                'assets/blood_request/icons/blood_type.png',
+              'assets/blood_request/icons/blood_type.png',
               width: 25,
               height: 25,
             ),
@@ -144,7 +144,7 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
         decoration: InputDecoration(
           labelText: 'Patient Name *',
           labelStyle: TextStyle(
-           // color: nameColor,
+            // color: nameColor,
             fontWeight: FontWeight.w600,
             fontSize: 13,
           ),
@@ -183,7 +183,7 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
           ),
           prefixIcon: new IconButton(
             icon: new Image.asset(
-                'assets/blood_request/icons/hospital_name.png',
+              'assets/blood_request/icons/hospital_name.png',
               width: 25.0,
               height: 25.0,
             ),
@@ -216,7 +216,7 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
           ),
           prefixIcon: new IconButton(
             icon: new Image.asset(
-                'assets/blood_request/icons/contact_person.png',
+              'assets/blood_request/icons/contact_person.png',
               width: 25.0,
               height: 25.0,
             ),
@@ -250,7 +250,7 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
           ),
           prefixIcon: new IconButton(
             icon: new Image.asset(
-                'assets/blood_request/icons/contact_number.png',
+              'assets/blood_request/icons/contact_number.png',
               width: 25.0,
               height: 25.0,
             ),
@@ -274,38 +274,38 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
         margin: EdgeInsets.symmetric(horizontal: width * 0.14),
         padding: EdgeInsets.symmetric(horizontal: width * 0.05),
         child: Form(
-            key: _formKey,
-            child: Column(
-                children: <Widget>[
-                    getNameTextFieldWidget(),
-                    SizedBox(
-                        height: 10,
-                    ),
-                    getBloodTypeWidget(width),
-                    Divider(
-                        height: 1,
-                        color: Theme.of(context).primaryColor,
-                        thickness: 1,
-                    ),
-                    // getFatherNameTextFieldWidget(),
-                    SizedBox(
-                        height: 10,
-                    ),
-                    getHospitalNameTextFieldWidget(),
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              getNameTextFieldWidget(),
+              SizedBox(
+                height: 10,
+              ),
+              getBloodTypeWidget(width),
+              Divider(
+                height: 1,
+                color: Theme.of(context).primaryColor,
+                thickness: 1,
+              ),
+              // getFatherNameTextFieldWidget(),
+              SizedBox(
+                height: 10,
+              ),
+              getHospitalNameTextFieldWidget(),
 
-                    SizedBox(
-                        height: 10,
-                    ),
-                    getContactNameTextFieldWidget(),
-                    SizedBox(
-                        height: 10,
-                    ),
-                    getContactNumberTextFieldWidget(),
-                    SizedBox(
-                        height: 10,
-                    ),
-                ],
-            ),
+              SizedBox(
+                height: 10,
+              ),
+              getContactNameTextFieldWidget(),
+              SizedBox(
+                height: 10,
+              ),
+              getContactNumberTextFieldWidget(),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
         ));
   }
 
@@ -313,10 +313,10 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
     return Container(
       height: height * (1 / 3),
       child: Center(
-        child: Image.asset('assets/blood_request/banners/blood_banner')
+          child: Image.asset('assets/blood_request/banners/blood_banner')
 
 
-          /* SizedBox.expand(
+        /* SizedBox.expand(
           child: Carousel(
             dotSize: 4.0,
             dotSpacing: 15.0,
@@ -341,17 +341,17 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
 
 
   makeBloodRequestHttpRequest(name, bloodType, hospitalName, contactName, contactNumber) async{
-      await HttpHelper.makeBloodNotificationRequest(name, bloodType, hospitalName, contactName, contactNumber).then((resp){
-          if (resp['status'].toString() == "true") {
+    await HttpHelper.makeBloodNotificationRequest(name, bloodType, hospitalName, contactName, contactNumber).then((resp){
+      if (resp['status'].toString() == "true") {
 
-              Toast.show("Request Initiated Successfully", context,
-                  duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
-              Navigator.of(context).pop();
-          } else {
-              Toast.show(resp['message'].toString(), context,
-                  duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
-          }
-      });
+        Toast.show("Request Initiated Successfully", context,
+            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+        Navigator.of(context).pop();
+      } else {
+        Toast.show(resp['message'].toString(), context,
+            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+      }
+    });
   }
 
 
@@ -364,7 +364,7 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+    //  resizeToAvoidBottomInset: true,
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: CustomAppBar(
         title: 'Blood Request',
@@ -374,41 +374,44 @@ class _BloodRequestPageState extends State<BloodRequestPage> {
       bottomNavigationBar: CustomBottomNavigationBar(
         height: height,
       ),
-      body: SingleChildScrollView(
-        child: GestureDetector(
-          onTap: ()=> FocusScope.of(context).requestFocus(new FocusNode()),
-          child: Column(
-            children: [
-              // getCarouselWidget(height),
+      body: Column(
+        children: [
+          // getCarouselWidget(height),
 
-              Image.asset('assets/blood_request/banners/blood_banner.png'),
+         Expanded(
+           flex: 1,
+           child:  Image.asset('assets/blood_request/banners/blood_banner.png'),
+         ),
 
-              Container(
-               // height: height * 0.50,
-                child:  SingleChildScrollView(
+         Expanded(
+           flex: 2,
+           child:  Container(
+             child: SingleChildScrollView(
 
-                  child: Column(
-                    children: <Widget>[
+               child: Column(
+                 children: <Widget>[
 
-                      SizedBox(height: height * 0.09),
-                      getBloodRequestFormWidget(height, width),
-                      SizedBox(height: height * 0.03),
-                      GestureDetector(
-                        onTap: () {
-                          if (_formKey.currentState.validate()) {
-                            makeBloodRequestHttpRequest(nameTextEditingController.text, _bloodTypeDropDownValue, hospitalNameTextEditingController.text, contactNameTextEditingController.text, contactNumberTextEditingController.text);
-                          }
-                        },
-                        child: ButtonWidget(label: 'Submit'),
-                      ),
-                      SizedBox(height: height * 0.03),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+                   SizedBox(height: height * 0.09),
+                   getBloodRequestFormWidget(height, width),
+                   SizedBox(height: height * 0.03),
+
+
+                   GestureDetector(
+                     onTap: () {
+                       if (_formKey.currentState.validate()) {
+
+                         makeBloodRequestHttpRequest(nameTextEditingController.text, _bloodTypeDropDownValue, hospitalNameTextEditingController.text, contactNameTextEditingController.text, contactNumberTextEditingController.text);
+                       }
+                     },
+                     child: ButtonWidget(label: 'Submit'),
+                   ),
+                   SizedBox(height: height * 0.03),
+                 ],
+               ),
+             ),
+           ),
+         ),
+        ],
       ),
 
     );

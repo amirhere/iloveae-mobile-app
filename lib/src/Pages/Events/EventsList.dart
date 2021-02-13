@@ -48,6 +48,7 @@ class _EventsListPageState extends State<EventsListPage> {
 
     setState(
       () {
+
         eventsDataList = data.map((val) => Event.fromJson(val)).toList();
         for(var loop = 0; loop < eventsDataList.length; loop++){
          Event event =  eventsDataList.elementAt(loop);

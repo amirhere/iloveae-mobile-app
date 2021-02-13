@@ -282,7 +282,7 @@ class _NotificationPageState extends State<NotificationPage> {
 
 
             SocialMediaWidget(
-                description: "Blood Request \r\n\r\n"+"Blood Type: "+notification['data']['blood_type']+"\r\n"+"Hospital Name: "+notification['data']['hospital_name']+"\r\n"+"Contact Number: "+notification['data']['contact_number'],
+                description: "Blood Request \r\n\r\n"+"Blood Type: "+notification['data']['blood_type']+"\r\n"+"Hospital Name: "+notification['data']['hospital_name']+"\r\n"+"Patient Name: "+notification['data']['patient_name']+"\r\n"+"Contact Name: "+ notification['data']['contact_name']+"\r\n"+"Contact Number: "+notification['data']['contact_number'],
                 //imagePath: (_image.path == null) ? "" : _image.path,
                 //deeplink: deepLink,
                 height: height),

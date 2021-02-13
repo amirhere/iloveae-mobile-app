@@ -12,6 +12,7 @@ class HttpHelper{
 
 
 
+
     static Future<Map> makeLoginRequest(email, password) async {
         showLoadingDialog();
 
@@ -66,6 +67,105 @@ class HttpHelper{
 
     }
 
+
+
+
+
+    static Future<Map> makeHomeGalleryImagesRequest() async{
+        showLoadingDialog();
+
+        final http.Response response = await http.post(
+            Helper.show_home_gallery,
+            headers: Helper.headers,
+        );
+
+        hideLoadingDialog();
+
+        return json.decode(response.body);
+
+    }
+
+
+
+
+    static Future<Map> makeNewsGalleryImagesRequest() async{
+        showLoadingDialog();
+
+        final http.Response response = await http.post(
+            Helper.show_news_gallery,
+            headers: Helper.headers,
+        );
+
+        hideLoadingDialog();
+
+        return json.decode(response.body);
+
+    }
+
+
+    static Future<Map> makeTourismGalleryImagesRequest() async{
+        showLoadingDialog();
+
+        final http.Response response = await http.post(
+            Helper.show_tourism_gallery,
+            headers: Helper.headers,
+        );
+
+        hideLoadingDialog();
+
+        return json.decode(response.body);
+
+    }
+
+
+
+    static Future<Map> makeSuccessStoriesGalleryImagesRequest() async{
+        showLoadingDialog();
+
+        final http.Response response = await http.post(
+            Helper.show_success_stories_gallery,
+            headers: Helper.headers,
+        );
+
+        hideLoadingDialog();
+
+        return json.decode(response.body);
+
+    }
+
+
+
+    static Future<Map> makeBloodRequestGalleryImagesRequest() async{
+        showLoadingDialog();
+
+        final http.Response response = await http.post(
+            Helper.show_blood_request_gallery,
+            headers: Helper.headers,
+        );
+
+        hideLoadingDialog();
+
+        return json.decode(response.body);
+
+    }
+
+
+
+
+
+    static Future<Map> makeThingsToDoGalleryImagesRequest() async{
+        showLoadingDialog();
+
+        final http.Response response = await http.post(
+            Helper.show_tourism_things_to_do_gallery,
+            headers: Helper.headers,
+        );
+
+        hideLoadingDialog();
+
+        return json.decode(response.body);
+
+    }
 
 
 

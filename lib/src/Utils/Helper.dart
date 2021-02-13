@@ -44,6 +44,14 @@ class Helper{
 
     static String show_events = public_url+ "event/show";
 
+    static String show_home_gallery = public_url+ "gallery/home/show";
+    static String show_news_gallery = public_url+ "gallery/news/show";
+    static String show_tourism_gallery = public_url+ "gallery/tourism/show";
+    static String show_success_stories_gallery = public_url+ "gallery/success_stories/show";
+    static String show_blood_request_gallery = public_url+ "gallery/blood_request/show";
+
+    static String show_tourism_things_to_do_gallery = public_url+ "gallery/tourism_things_to_do/show";
+
 
 
 

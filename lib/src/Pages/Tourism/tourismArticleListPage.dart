@@ -10,6 +10,8 @@ import 'package:flutter_login_signup/src/Widgets/listViewTileWidget.dart';
 import 'package:flutter_login_signup/src/Pages/Tourism/tourismArticlePage.dart';
 
 import 'package:load/load.dart';
+import 'package:flutter_login_signup/src/Utils/HttpHelper.dart';
+
 
 class TourismArticleListPage extends StatefulWidget {
   String category, searchBy;
@@ -30,7 +32,8 @@ class _TourismArticleListPageState extends State<TourismArticleListPage> {
 
   Map<String, dynamic> data;
   List dataArray;
-  List<NetworkImage> networkImagesList;
+  List<NetworkImage> networkImagesList = List<NetworkImage>();
+
 
   _TourismArticleListPageState(this.category, this.searchBy) {
     //do nothing...
@@ -71,27 +74,35 @@ class _TourismArticleListPageState extends State<TourismArticleListPage> {
       height: height * (1 / 3),
       child: Center(
         child: SizedBox.expand(
-          child: Carousel(
-            dotSize: 4.0,
-            dotSpacing: 15.0,
-            dotColor: Color(0xFF573555),
-            indicatorBgPadding: 5.0,
-            //  dotBgColor: Colors.purple.withOpacity(0.5),
-            //borderRadius: true,
-            images: [
-              //  ExactAssetImage("assets/banner1.png"),
-              //   ExactAssetImage("assets/banner2.png"),
-              //  ExactAssetImage("assets/banner1.png"),
-              NetworkImage(
-                  'https://c.files.bbci.co.uk/8238/production/_113963333_062930447.jpg'),
-              NetworkImage(
-                  'https://i.ytimg.com/vi/HlEFrbLeDks/maxresdefault.jpg'),
-              NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQiZ5txPdZBmES7mBciInO5S6BV7HDHdm7exg&usqp=CAU'),
-              NetworkImage(
-                  'https://c.files.bbci.co.uk/5A67/production/_109934132_final-final-feat.jpg'),
-              //   NetworkImage('https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
-            ],
+          child: FutureBuilder(
+            future: HttpHelper.makeThingsToDoGalleryImagesRequest(),
+            builder: (BuildContext context, AsyncSnapshot snapshot){
+
+            //  networkImagesList.add(NetworkImage('https://upload.wikimedia.org/wikipedia/commons/7/7f/Dani_Daniels_AEE_2013.jpg'));
+
+              for(var loop = 0;loop < snapshot.data['images'].length; loop++){
+                print(snapshot.data['images'][loop]);
+
+                networkImagesList.add(NetworkImage(snapshot.data['images'][loop]));
+              }
+
+
+              if(snapshot.connectionState != ConnectionState.done){
+                return Container(); // your widget while loading
+              }
+
+              if(!snapshot.hasData){
+                return Container(); //your widget when error happens
+              }
+
+              return Carousel(
+                dotSize: 4.0,
+                dotSpacing: 15.0,
+                dotColor: Color(0xFF573555),
+                indicatorBgPadding: 5.0,
+                images:  networkImagesList,
+              );
+            },
           ),
         ),
       ),

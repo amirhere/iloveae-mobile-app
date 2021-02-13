@@ -10,49 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e71040e-c57d-4d16-8cf3-8940589d9774" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../assets/event/checked.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assets/notification/blood_donations_header.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_20_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_20_3_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_21_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_21_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/Models/Gallery/HomeGallery.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/iLoveAE - 01-12-2020.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/iLoveAE - 10-11-2020.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/iLoveAE - 11-11-2020.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/iLoveAE - 30-11-2020.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/iloveAE - 16-11-2020.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/iloveAE - 18-11-2020.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/iloveAE - 23-11-2020.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Auth/forgotPasswordPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Auth/forgotPasswordPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Auth/loginPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Auth/loginPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Auth/registration.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Auth/registration.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/src/Pages/BloodRequest/bloodRequest.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/BloodRequest/bloodRequest.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/BusinessDirectory/jobResultPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/BusinessDirectory/jobResultPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/BusinessDirectory/jobSearchPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/BusinessDirectory/jobSearchPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Events/EventPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Events/EventPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Events/EventsList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Events/EventsList.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/src/Pages/News/newsListPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/News/newsListPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/News/newsPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/News/newsPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Notification/notificationPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Notification/notificationPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Settings/editProfile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Settings/editProfile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/SuccessStories/successStoryPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/SuccessStories/successStoryPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Tourism/tourismArticlePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Tourism/tourismArticlePage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Tourism/tourismSearchPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Tourism/tourismSearchPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/SuccessStories/successStoriesListPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/SuccessStories/successStoriesListPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/Tourism/tourismArticleListPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/Tourism/tourismArticleListPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/src/Pages/homePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/homePage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Pages/welcomePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Pages/welcomePage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Widgets/customAppBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Widgets/customAppBar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Widgets/customBottomNavigationBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Widgets/customBottomNavigationBar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/src/Widgets/socialMedia.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Widgets/socialMedia.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/Utils/Helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Utils/Helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/src/Utils/HttpHelper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/src/Utils/HttpHelper.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,12 +44,12 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
+          <provider editor-type-id="android-manifest" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -202,25 +170,25 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="app" type="47feb1d3:ProjectViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="android" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="47feb1d3:ProjectViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -342,7 +310,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="805" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.30829757" />
@@ -421,8 +388,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
